@@ -62,6 +62,14 @@ public class Grille{
         return this.getCase(i,j).getCouleur();
     }
 
+    public Sequence[] getSequencesLigne(){
+        return sLigne;
+    }
+
+    public Sequence[] getSequencesColonne(){
+        return sColonne;
+    }
+
     public String afficheSeqligne(){
         String s = "";
         for (Sequence seq : sLigne){
