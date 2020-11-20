@@ -29,7 +29,7 @@ public class Algo1 extends Algorithmes{
                 return false;
 
             }else{
-                return T(i,j - l - 1, l-1) || T(i,j-l-2, l - 1);
+                return T(i,j - l - 1, l-1) || T(i,j-1, l - 1);
             }
         }
     }
