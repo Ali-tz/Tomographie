@@ -1,24 +1,35 @@
 import  javax.swing.*;
 import java.awt.*;
-import Grille.Case;;
 
 public class API_Case {
-    private Case c;
-    private JPanel pan;
+    private int i,j, couleur;
+    private JPanel pan; 
 
-    public API_Case(Case c) {
-        this.c = c;
-
+    public API_Case(int i, int j, int couleur) {
+        this.i = i;
+        this.j = j;
+        this.couleur = couleur;
         pan = new JPanel();
-        if (c.getCouleur() == 2) {
+        if (couleur == 2) {
             pan.setBackground(Color.black);
         }
         else{
             pan.setBackground(Color.white);
         }
     }
+    
+    @Override
+    public Object setLayout(Layout)
 
-    public Case getCase(){
-        return c;
+    public int getLigne(){
+        return i;
+    }
+
+    public int getColonne(){
+        return j;
+    }
+
+    public int getCouleur(){
+        return couleur;
     }
 }
