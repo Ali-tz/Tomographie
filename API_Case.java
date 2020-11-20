@@ -1,15 +1,15 @@
-import  javax.swing.*;
+/*import  javax.swing.*;
 import java.awt.*;
 
-public class API_Case {
+public class API_Case extends JPanel{
     private int i,j, couleur;
-    private JPanel pan; 
+    //private JPanel pan; 
 
     public API_Case(int i, int j, int couleur) {
         this.i = i;
         this.j = j;
         this.couleur = couleur;
-        pan = new JPanel();
+        //pan = new JPanel();
         if (couleur == 2) {
             pan.setBackground(Color.black);
         }
@@ -18,10 +18,10 @@ public class API_Case {
         }
     }
     
-    @Override
-    public Object setLayout(Layout)
+    /*@Override
+    public Object setLayout(Layout)*/
 
-    public int getLigne(){
+    /*public int getLigne(){
         return i;
     }
 
@@ -32,4 +32,4 @@ public class API_Case {
     public int getCouleur(){
         return couleur;
     }
-}
+}*/

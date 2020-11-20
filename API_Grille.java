@@ -20,15 +20,17 @@ public class API_Grille{
 		this.frame.setContentPane(grille);
 
 		JPanel[][] cases = new JPanel[n][m];
-		for(int j = 0; j < m; j++){  				  /* Mise en place des case de la grille */
-			for(int i = 0; i < n; i++){
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){  				  /* Mise en place des case de la grille */
 				cases[i][j] = new JPanel();
 				if(this.G.getCouleur(i, j) == 2){
 					cases[i][j].setBackground(Color.BLACK);
-				}else{
+				}else if(this.G.getCouleur(i, j) == 1){
 					cases[i][j].setBackground(Color.WHITE);
+				}else{
+					cases[i][j].setBackground(Color.GRAY);
 				}
-				cases[i][j].setLayout(new BorderLayout());
+				//cases[i][j].setLayout(new BorderLayout());
 				grille.add(cases[i][j]);
 			}
 
