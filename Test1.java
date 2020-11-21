@@ -1,7 +1,11 @@
-import Grille.*;
 import java.nio.file.*;
 import java.io.*;
-import Algorithmes.Algo1;
+import  javax.swing.*;
+//import  java.awt.*;
+
+import Grille.*;
+import Algorithmes.*;
+
 public class Test1{
 
     public static void main(String[] args) throws IOException {
@@ -13,16 +17,17 @@ public class Test1{
 
 
         Grille grille = new Grille(str);
+        API_Grille f = new API_Grille(grille);
+        f.run();
+        //System.out.println(grille);
 
-        System.out.println(grille);
-
-        Algo1 algo1 = new Algo1(grille);
+        /*Algo1 algo1 = new Algo1(grille);
 
         System.out.println(grille);
         for(int i=0; i<grille.getN(); i++){
             System.out.println(algo1.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
 
-        }
+        }*/
 
     }
 }
