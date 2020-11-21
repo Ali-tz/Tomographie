@@ -15,19 +15,22 @@ public class Test1{
 
         String str = new String(Files.readAllBytes(Paths.get(args[0])));
 
-
+        System.out.println(str);
         Grille grille = new Grille(str);
+        
+        /*
         API_Grille f = new API_Grille(grille);
-        f.run();
-        //System.out.println(grille);
+        f.run(); */
+        
+        System.out.println(grille);
 
-        /*Algo1 algo1 = new Algo1(grille);
+        Algo1 algo1 = new Algo1(grille);
 
         System.out.println(grille);
         for(int i=0; i<grille.getN(); i++){
             System.out.println(algo1.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
 
-        }*/
+        }
 
     }
 }
