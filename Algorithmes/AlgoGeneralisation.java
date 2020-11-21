@@ -1,8 +1,8 @@
 package Algorithmes;
 import Grille.*;
-public class Algo1 extends Algorithmes{
+public class AlgoGeneralisation extends Algorithmes{
 
-    public Algo1(Grille g){
+    public AlgoGeneralisation(Grille g){
         super(g);
     }
 
