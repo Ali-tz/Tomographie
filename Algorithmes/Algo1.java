@@ -15,8 +15,6 @@ public class Algo1 extends Algorithmes{
             return false;
         }
 
-        int sl = this.G.getSequencesLigne()[i].getSequence_i(l-1);
-
         if(l == 0){
             for (int k =0; k<j; k++){
                 if (G.getCouleur(i, k)== 2){
@@ -26,6 +24,8 @@ public class Algo1 extends Algorithmes{
             return true;
         }
 
+        
+        int sl = this.G.getSequencesLigne()[i].getSequence_i(l-1);
         
         if(j < sl - 1){
             return false;

@@ -46,6 +46,10 @@ public class Grille{
         }
     }
 
+    public void setColor(int i,int j,int cl){
+        this.getCase(i,j).changeCouleur(cl);
+    }
+
     public int getN(){
         return n;
     }
@@ -116,5 +120,6 @@ public class Grille{
 
         return s;
     }
+
     
 }
