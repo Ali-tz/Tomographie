@@ -1,4 +1,6 @@
 package Algorithmes;
+import org.graalvm.compiler.nodes.extended.GetClassNode;
+
 import Grille.*;
 public class Algo1 extends Algorithmes{
 
@@ -12,10 +14,15 @@ public class Algo1 extends Algorithmes{
         if (j<0){
             return false;
         }
-        
+
         int sl = this.G.getSequencesLigne()[i].getSequence_i(l-1);
 
         if(l == 0){
+            for (int k =0; k<j; k++){
+                if (G.getCouleur(i, k)== 2){
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -72,6 +79,6 @@ public class Algo1 extends Algorithmes{
             return T(i,j-1,l);
         }
 
-        return T(i,j-sl-1,l-1);   
+        return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
 }
