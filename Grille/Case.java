@@ -3,11 +3,13 @@ public class Case{
 
     private int x,y;
     private int couleur; /* 0 non initialisé --- 1 = BLANC ----- 2 = BLACKNOIR*/
+    private boolean recent;
 
     public Case(int x, int y, int couleur){
         this.x = x;
         this.y = y;
         this.couleur = couleur;
+        this.recent = false;
     }
 
     public Case(int x, int y){
@@ -22,7 +24,13 @@ public class Case{
     public void changeCouleur(int cl){
         couleur = cl;
     }
+    public void setRecent(boolean bool){
+        recent = bool;
+    }
 
+    public boolean getRecent(){
+        return recent;
+    }
     public int getX(){
         return x;
     }

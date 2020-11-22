@@ -6,8 +6,12 @@ public class Grille{
     private Sequence[] sColonne;
     private int tailleSeqColonne;
     private int tailleSeqLigne;
+    private String s;
 
     public Grille(String s){
+
+        this.s = s;
+
         this.tailleSeqColonne = 0;
         this.tailleSeqLigne = 0;
 
@@ -46,6 +50,10 @@ public class Grille{
         }
     }
 
+    public Grille clone(Grille G){
+        return new Grille(G.getSequences());
+    }
+
     public void setColor(int i,int j,int cl){
         this.getCase(i,j).changeCouleur(cl);
     }
@@ -72,6 +80,10 @@ public class Grille{
 
     public Sequence[] getSequencesColonne(){
         return sColonne;
+    }
+
+    public String getSequences(){
+        return s;
     }
 
     public String afficheSeqligne(){
