@@ -2,15 +2,15 @@ package Grille;
 public class Grille{
     private int n, m;
     private Case[][] grille;
-    private Sequence[] sLigne;
-    private Sequence[] sColonne;
-    private int tailleSeqColonne;
-    private int tailleSeqLigne;
+    private Sequence[] sLigne, sColonne;
+    private int tailleSeqColonne, tailleSeqLigne;
     private String s;
+    private int complete; /* 1-> complété -- -1->on ne sait pas -- 0-> pas complété*/
 
     public Grille(String s){
 
         this.s = s;
+        this.complete = -1;
 
         this.tailleSeqColonne = 0;
         this.tailleSeqLigne = 0;
@@ -64,6 +64,17 @@ public class Grille{
 
     public int getM(){
         return m;
+    }
+
+    public int estComplete(){
+        return complete;
+    }
+    public void setComplete(){
+        complete = 1;
+    }
+
+    public void setPasComplete(){
+        complete = 0;
     }
 
     public Case getCase(int i, int j){

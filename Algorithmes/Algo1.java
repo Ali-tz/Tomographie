@@ -81,4 +81,78 @@ public class Algo1 extends Algorithmes{
 
         return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
+
+    public boolean T2(int i, int j, int l){
+
+        
+        if (i<0){
+            return false;
+        }
+
+        if(l == 0){
+            for (int k =0; k<i; k++){
+                if (G.getCouleur(k, j)== 2){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        
+        int sl = this.G.getSequencesColonne()[j].getSequence_i(l-1);
+        
+        if(i < sl - 1){
+            return false;
+        }
+        if(i == sl - 1){
+            if(l != 1){
+                return false;
+            }
+            
+            /* PAS BESOIN
+            if (j+1 < G.getM()-1){
+                if (G.getCouleur(i,j+1)==2){
+                    return false;
+                }
+            } */
+
+            for(int k=0; k<j+1; k++){
+                if (G.getCouleur(k, j)==1){
+                    return false;
+                }
+            }
+            return true;
+
+        }
+        /* T(i,j - sl - 1, l-1) || T(i,j-1, l) */
+        
+        /* PAS BESOIN
+        if (j+1 < G.getM()-1){
+            if (G.getCouleur(i,j+1)==2){
+                return T(i,j+1,l);
+            }
+        } */
+        
+        Boolean N = false; //boolean nous indiquant si l'on a croisé une case noir ou non
+        for (int k=i; k>i-sl;k--){ 
+            if (G.getCouleur(k,j)==2){
+                N = true;
+            }
+            if (G.getCouleur(k,j)==1){
+                if (N){
+                    return false;
+                }                
+                return T(j,k-1,l);
+            }
+        }
+
+        if (G.getCouleur(i-sl,j)==2){
+            if (G.getCouleur(i, j)==2){
+                return false;
+            }
+            return T(i-1,j,l);
+        }
+
+        return T(i-sl-1,j,l-1)||T(i-1,j,l);   
+    }
 }
