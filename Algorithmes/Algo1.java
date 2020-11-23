@@ -142,7 +142,7 @@ public class Algo1 extends Algorithmes{
                 if (N){
                     return false;
                 }                
-                return T(j,k-1,l);
+                return T2(j,k-1,l);
             }
         }
 
@@ -150,9 +150,9 @@ public class Algo1 extends Algorithmes{
             if (G.getCouleur(i, j)==2){
                 return false;
             }
-            return T(i-1,j,l);
+            return T2(i-1,j,l);
         }
 
-        return T(i-sl-1,j,l-1)||T(i-1,j,l);   
+        return T2(i-sl-1,j,l-1)||T2(i-1,j,l);   
     }
 }

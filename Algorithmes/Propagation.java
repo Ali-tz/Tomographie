@@ -11,7 +11,7 @@ public class Propagation extends Algo1{
     }
 
     public boolean colorLigne(int i, int j, int l){ 
-        int m = G.getM();
+        int m = G.getM()-1;
         if(!T(i,m,l)){
             return false;
         }
@@ -38,19 +38,30 @@ public class Propagation extends Algo1{
     }
 
     public boolean colorColonne(int i, int j, int l){ 
-        if(!T(i,j,l)){
+        int n = G.getN()-1;
+        if(!T2(n,j,l)){
             return false;
         }
+        if(i < 0){return true;}
+
         G.getCase(i, j).changeCouleur(2);
-        if(T(i,j,l)){
-            return colorColonne(i-l-1, j, l-1);
+        System.out.println("Dans colorLigne: " + i);
+        if(T2(n,j,l)){
+            G.getCase(i, j).changeCouleur(1);
+            if(T2(n,j,l)){
+                G.getCase(i, j).changeCouleur(0); 
+            }else{
+                G.getCase(i, j).changeCouleur(2);
+            }
+            return colorColonne(i-1, j, l);
         }else{
             G.getCase(i, j).changeCouleur(1);
-            if(T(i,j,l)){
-                return colorColonne(i-1,j,l);
+            if(T2(n ,j ,l)){
+                return colorColonne(i-1, j, l);
             }
+            G.getCase(i, j).changeCouleur(0); 
+            return false;
         }
-        return true;
     }
 
 
