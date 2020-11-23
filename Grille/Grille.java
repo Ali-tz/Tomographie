@@ -50,8 +50,8 @@ public class Grille{
         }
     }
 
-    public Grille clone(Grille G){
-        return new Grille(G.getSequences());
+    public Grille clone(){
+        return new Grille(this.getSequences());
     }
 
     public void setColor(int i,int j,int cl){

@@ -1,6 +1,7 @@
 import java.nio.file.*;
 import java.io.*;
 import Grille.*;
+import Algorithmes.*;
 
 public class Main{
     public static void main(String[] args) throws IOException {
@@ -9,11 +10,15 @@ public class Main{
         }
         
         String str = new String(Files.readAllBytes(Paths.get(args[0])));
-        System.out.println(str);
 
         Grille grille = new Grille(str);
-
         System.out.println(grille);
+
+        Propagation test = new Propagation(grille);
+        test.coloration();
+        API_Grille f = new API_Grille(grille);
+        f.run();
+
     }
   
 }
