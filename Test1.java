@@ -40,8 +40,8 @@ public class Test1{
 
         System.out.println(grille);
 
-        for(int i=0; i<grille.getN(); i++){
-            System.out.println(algo1.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
+        for(int j=0; j<grille.getM(); j++){
+            System.out.println(algo1.T2(grille.getN()-1, j, grille.getSequencesColonne()[j].getTaille()));
 
         }
 

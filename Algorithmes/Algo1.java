@@ -98,9 +98,9 @@ public class Algo1 extends Algorithmes{
             return true;
         }
 
-        
         int sl = this.G.getSequencesColonne()[j].getSequence_i(l-1);
-        
+
+
         if(i < sl - 1){
             return false;
         }
@@ -116,8 +116,8 @@ public class Algo1 extends Algorithmes{
                 }
             } */
 
-            for(int k=0; k<j+1; k++){
-                if (G.getCouleur(k, j)==1){
+            for(int k=0; k<i+1; k++){
+                if (G.getCouleur(k, i)==1){
                     return false;
                 }
             }
@@ -142,7 +142,7 @@ public class Algo1 extends Algorithmes{
                 if (N){
                     return false;
                 }                
-                return T2(j,k-1,l);
+                return T2(k-1,j,l);
             }
         }
 

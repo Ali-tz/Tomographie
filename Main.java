@@ -15,7 +15,11 @@ public class Main{
         System.out.println(grille);
 
         Propagation test = new Propagation(grille);
-        test.coloration();
+
+        Grille grilleColo = test.coloration();
+
+        System.out.println(grilleColo);
+
         API_Grille f = new API_Grille(grille);
         f.run();
 
