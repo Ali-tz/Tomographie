@@ -84,6 +84,10 @@ public class Algo1 extends Algorithmes{
             }
             return T(i,j-1,l);
         }
+        
+        if (sl==1 && N){
+            return T(i,j-sl-1,l-1)||T(i,j-1,l-1);
+        } 
 
         return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
@@ -158,6 +162,11 @@ public class Algo1 extends Algorithmes{
             }
             return T2(i-1,j,l);
         }
+
+        
+        if (sl==1 && N){
+            return T2(i-sl-1,j,l-1)||T2(i-1,j,l-1);
+        } 
         return T2(i-sl-1,j,l-1)||T2(i-1,j,l);   
     }
 }
