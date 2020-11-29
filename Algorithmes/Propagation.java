@@ -87,10 +87,10 @@ public class Propagation extends Algo1{
         int m = G.getM();
 
         ArrayList<Integer> lignesAVoir = new ArrayList<Integer>();
-        for(int i = 0 ; i < n ; i++){  lignesAVoir.add((Integer)i); System.out.println(i + "  " +lignesAVoir.get((Integer)i) + '\n');}
+        for(int i = 0 ; i < n ; i++){  lignesAVoir.add(i,i); }
 
         ArrayList<Integer> colonnesAVoir = new ArrayList<Integer>();
-        for(int i = 0; i < m; i++){ colonnesAVoir.add((Integer)i);    }
+        for(int i = 0; i < m; i++){ colonnesAVoir.add(i,i);    }
 
         int cpt = 0;
 
@@ -109,15 +109,13 @@ public class Propagation extends Algo1{
                 }
                 for(int j = 0; j < m; j++){
                     if(G.getCase(p, j).getRecent()){
-                        // if(colonnesAVoir.contains(j)){
-                        colonnesAVoir.add(j);
-                        //}
+                        colonnesAVoir.add(colonnesAVoir.size(), j);
                         cpt++;
                         G.getCase(p, j).setRecent(false);
                     }
                         
                 }
-                System.out.println(p + '\n');
+                //System.out.println(p+ "  "+ lignesAVoir.indexOf(p) + '\n');
                 //System.out.println(G);
                 lignesAVoir.remove((Object) p); 
             }
@@ -126,6 +124,7 @@ public class Propagation extends Algo1{
             System.out.println("Puis les colonnes");
             while ( !colonnesAVoir.isEmpty() ){              
                 int q = colonnesAVoir.get(0);
+                //System.out.println(q+"  "  +colonnesAVoir.indexOf(q) +'\n');
         
                 ok = colorColonne(n-1, q, G.getSequencesColonne()[q].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
@@ -135,16 +134,13 @@ public class Propagation extends Algo1{
                 }
                 for(int i = 0; i < n; i++){
                     if(G.getCase(i, q).getRecent()){
-                        lignesAVoir.add(i);
+                        lignesAVoir.add(lignesAVoir.size(),i);
                         cpt++;
                         G.getCase(i, q).setRecent(false);
-                    }
-                    
+                    }    
                 }
-                System.out.println(q+  '\n');
                 //System.out.println(G);
                 colonnesAVoir.remove((Object) q);
-
             }
 
             if(cpt == n*m){

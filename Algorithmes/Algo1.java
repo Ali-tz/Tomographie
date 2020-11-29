@@ -63,6 +63,7 @@ public class Algo1 extends Algorithmes{
         /*###########################################*/
         /* Cas où j > sl-1 */
         
+
         Boolean N = false; /*boolean nous indiquant si l'on a croisé une case noir ou non*/
         
         for (int k=j; k>j-sl;k--){ /* On regarde si on peut placer la séquence sl entre les case (i,j)et (i, j-sl-1)*/
@@ -84,7 +85,6 @@ public class Algo1 extends Algorithmes{
             return T(i,j-1,l);
         }
 
-
         return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
 
@@ -96,7 +96,7 @@ public class Algo1 extends Algorithmes{
 
         if(l == 0){
             for (int k =0; k<=i; k++){
-                if (G.getCouleur(k, j)== 2){
+                if (G.getCouleur(k, j) == 2){
                     return false;
                 }
             }
@@ -137,7 +137,8 @@ public class Algo1 extends Algorithmes{
                 return T(i,j+1,l);
             }
         } */
-        
+
+
         Boolean N = false; //boolean nous indiquant si l'on a croisé une case noir ou non
         for (int k=i; k>i-sl;k--){ 
             if (G.getCouleur(k,j)==2){
@@ -157,7 +158,6 @@ public class Algo1 extends Algorithmes{
             }
             return T2(i-1,j,l);
         }
-
         return T2(i-sl-1,j,l-1)||T2(i-1,j,l);   
     }
 }
