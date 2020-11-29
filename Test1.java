@@ -26,22 +26,17 @@ public class Test1{
 
         Algo1 algo1 = new Algo1(grille);
 
-        grille.setColor(0, 2, 2);
         grille.setColor(0, 0, 2);
-        grille.setColor(1, 1, 1);
-        grille.setColor(2, 1, 2);
-        grille.setColor(2, 4, 2);
-        grille.setColor(3, 1, 1);
-        grille.setColor(3, 2, 1);
-        grille.setColor(3, 3, 1);
-        grille.setColor(3, 4, 1);
+        grille.setColor(0, 1, 1);   
+        grille.setColor(0, 2, 2);
+        
 
 
 
         System.out.println(grille);
 
-        for(int j=0; j<grille.getM(); j++){
-            System.out.println(algo1.T2(grille.getN()-1, j, grille.getSequencesColonne()[j].getTaille()));
+        for(int i=0; i<grille.getN(); i++){
+            System.out.println(algo1.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
 
         }
 

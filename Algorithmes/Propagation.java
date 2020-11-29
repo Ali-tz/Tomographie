@@ -10,69 +10,72 @@ public class Propagation extends Algo1{
         super(G);
     }
 
-    public boolean colorLigne(int i, int j, int l, Grille grille){ 
-        int m = grille.getM()-1;
+    public boolean colorLigne(int i, int j, int l){ 
+        int m = G.getM()-1;
 
         if(!T(i,m,l)){
             return false;
         }
         if(j < 0){return true;}
 
-        if (grille.getCouleur(i, j)!=0){
-            return colorLigne(i, j-1, l, grille);
+        if (G.getCouleur(i, j)!=0){
+            return colorLigne(i, j-1, l);
         }
 
-        grille.getCase(i, j).changeCouleur(2);
+        G.getCase(i, j).changeCouleur(2);
 
         if(T(i,m,l)){
-            grille.getCase(i, j).changeCouleur(1);
+            G.getCase(i, j).changeCouleur(1);
             if(T(i,m,l)){
-                grille.getCase(i, j).changeCouleur(0); 
+                G.getCase(i, j).changeCouleur(0); 
             }else{
-                grille.getCase(i, j).changeCouleur(2);
-                grille.getCase(i, j).setRecent(true);
+                G.getCase(i, j).changeCouleur(2);
+                G.getCase(i, j).setRecent(true);
             }
-            return colorLigne(i, j-1, l, grille);
+            return colorLigne(i, j-1, l);
         }else{
-            grille.getCase(i, j).changeCouleur(1);
+            G.getCase(i, j).changeCouleur(1);
             if(T(i,m,l)){
-                grille.getCase(i, j).setRecent(true);
-                return colorLigne(i, j-1, l, grille);
+                G.getCase(i, j).setRecent(true);
+                return colorLigne(i, j-1, l);
             }
-            grille.getCase(i, j).changeCouleur(0); 
+            G.getCase(i, j).changeCouleur(0); 
             return false;
         }
     }
 
-    public boolean colorColonne(int i, int j, int l, Grille grille){ 
-        int n = grille.getN()-1;
+    public boolean colorColonne(int i, int j, int l){
+
+        int n = G.getN()-1;
         if(!T2(n,j,l)){
             return false;
         }
         if(i < 0){return true;}
 
-        if (grille.getCouleur(i, j)!=0){
-            return colorColonne(i-1, j, l, grille);
+        if (G.getCouleur(i, j)!=0){
+            return colorColonne(i-1, j, l);
         }
 
-        grille.getCase(i, j).changeCouleur(2);
+        G.getCase(i, j).changeCouleur(2);
 
         if(T2(n,j,l)){
-            grille.getCase(i, j).changeCouleur(1);
+            G.getCase(i, j).changeCouleur(1);
             if(T2(n,j,l)){
-                grille.getCase(i, j).changeCouleur(0); 
+                G.getCase(i, j).changeCouleur(0); 
             }else{
-                grille.getCase(i, j).changeCouleur(2);
-                grille.getCase(i, j).setRecent(true);
+                G.getCase(i, j).changeCouleur(2);
+                G.getCase(i, j).setRecent(true);
             }
-            return colorColonne(i-1, j, l, grille);
+            return colorColonne(i-1, j, l);
         }else{
-            grille.getCase(i, j).changeCouleur(1);
+            G.getCase(i, j).changeCouleur(1);
             if(T2(n ,j ,l)){
-                grille.getCase(i, j).setRecent(true);
-                return colorColonne(i-1, j, l, grille);
+                G.getCase(i, j).setRecent(true);
+                return colorColonne(i-1, j, l);
             }
-            grille.getCase(i, j).changeCouleur(0); 
+            G.getCase(i, j).changeCouleur(0);
+
+            System.out.println("i:" + i + " j:" + j);
             return false;
         }
     }
@@ -80,8 +83,8 @@ public class Propagation extends Algo1{
 
     public Grille coloration(){
         Grille grille = G.clone();
-        int n = grille.getN();
-        int m = grille.getM();
+        int n = G.getN();
+        int m = G.getM();
 
         ArrayList<Integer> lignesAVoir = new ArrayList<Integer>();
         for(int i = 0 ; i < n ; i++){  lignesAVoir.add(i);}
@@ -94,43 +97,59 @@ public class Propagation extends Algo1{
         boolean ok;
         while(!lignesAVoir.isEmpty() || !colonnesAVoir.isEmpty()){
             System.out.println("On commence par les lignes");
-            for(int i = lignesAVoir.size()-1; i >= 0; i--){
-                ok = colorLigne(lignesAVoir.get(i), m-1, grille.getSequencesLigne()[i].getTaille(), grille);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
+            while ( !lignesAVoir.isEmpty() ){
+                int i = lignesAVoir.size()-1;
+                int p = lignesAVoir.get(i);
+                
+
+                ok = colorLigne(p, m-1, G.getSequencesLigne()[p].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
-                    grille.setPasComplete();
+                    G.setPasComplete();
+                    System.out.println("Grille non solvable\n");
                     return G;
                 }
                 for(int j = 0; j < m; j++){
-                    if(grille.getCase(i, j).getRecent()){
+                    if(G.getCase(p, j).getRecent()){
                         // if(colonnesAVoir.contains(j)){
-                            colonnesAVoir.add(j);
-                            //}
-                            cpt++;
-                            grille.getCase(i, j).setRecent(false);
-                        }
-                        lignesAVoir.remove((Object)i);
-                        //System.out.println(grille);
+                        colonnesAVoir.add(j);
+                        //}
+                        cpt++;
+                        G.getCase(p, j).setRecent(false);
                     }
+                        
+                    //System.out.println(grille);
                 }
+                lignesAVoir.remove((Object) p); 
+            }
+
+
             System.out.println("Puis les colonnes");
-            for(int j = colonnesAVoir.size()-1; j>=0; j--){
-                ok = colorColonne(n-1,j,G.getSequencesColonne()[j].getTaille(), grille);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
+            while ( !colonnesAVoir.isEmpty() ){ 
+                int j = colonnesAVoir.size()-1;              
+                int q = colonnesAVoir.get(j);
+
+            
+                
+                ok = colorColonne(n-1, q, G.getSequencesColonne()[q].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
                     G.setPasComplete();
+                    System.out.println("Grille non solvable\n");
                     return G;
                 }
                 for(int i = 0; i < n; i++){
-                    if(grille.getCase(i, j).getRecent()){
+                    if(G.getCase(i, q).getRecent()){
                         lignesAVoir.add(i);
                         cpt++;
-                        grille.getCase(i, j).setRecent(false);
+                        G.getCase(i, q).setRecent(false);
                     }
-                    colonnesAVoir.remove((Object)j);
+                    
                     //System.out.println(grille);
                 }
+                colonnesAVoir.remove((Object) q);
+
             }
+
             if(cpt == n*m){
-                G = grille;
                 G.setComplete();
                 return G;
             }

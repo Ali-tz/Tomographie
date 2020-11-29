@@ -12,11 +12,11 @@ public class Algo1 extends Algorithmes{
 
         
         if (j<0){
-            return false;
+            return (l==0);
         }
 
         if(l == 0){
-            for (int k =0; k<j; k++){
+            for (int k =0; k<=j; k++){
                 if (G.getCouleur(i, k)== 2){
                     return false;
                 }
@@ -84,13 +84,12 @@ public class Algo1 extends Algorithmes{
 
     public boolean T2(int i, int j, int l){
 
-        
         if (i<0){
-            return false;
+            return (l==0);
         }
 
         if(l == 0){
-            for (int k =0; k<i; k++){
+            for (int k =0; k<=i; k++){
                 if (G.getCouleur(k, j)== 2){
                     return false;
                 }
@@ -117,7 +116,7 @@ public class Algo1 extends Algorithmes{
             } */
 
             for(int k=0; k<i+1; k++){
-                if (G.getCouleur(k, i)==1){
+                if (G.getCouleur(k, j)==1){
                     return false;
                 }
             }
