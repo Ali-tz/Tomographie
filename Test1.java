@@ -26,26 +26,38 @@ public class Test1{
 
         Algo1 algo1 = new Algo1(grille);
 
-        grille.setColor(2, 0, 1);
-        grille.setColor(2, 1, 1);
-        grille.setColor(2, 2, 2);
-        grille.setColor(2, 3, 1);   
-        grille.setColor(2, 4, 1);
-        grille.setColor(2, 5, 2);
-        grille.setColor(2, 6, 1);
-        grille.setColor(2, 7, 2);
-        grille.setColor(2, 8, 1);   
-        grille.setColor(2, 9, 1);
-        grille.setColor(2, 10, 1);
-        grille.setColor(2, 11, 1);
-        grille.setColor(2, 12, 2);
-        grille.setColor(2, 13, 1);   
-        grille.setColor(2, 14, 2);
-        grille.setColor(2, 15, 1);
-        grille.setColor(2, 16, 1);
-        grille.setColor(2, 17, 1);
-        grille.setColor(2, 18, 1);  
-        grille.setColor(2, 19, 1);  
+        grille.setColor(14, 0, 1);
+        grille.setColor(14, 1, 1);
+        grille.setColor(14, 2, 1);
+        grille.setColor(14, 3, 1);   
+        grille.setColor(14, 4, 1);
+        grille.setColor(14, 5, 2);
+        grille.setColor(14, 6, 2);
+        grille.setColor(14, 7, 2);
+        grille.setColor(14, 8, 2);   
+        grille.setColor(14, 9, 2);
+        grille.setColor(14, 10, 2);
+        grille.setColor(14, 11, 1);
+        grille.setColor(14, 12, 1);
+        grille.setColor(14, 13, 1);   
+        grille.setColor(14, 14, 1);
+        grille.setColor(14, 15, 1);
+        grille.setColor(14, 16, 1);
+        grille.setColor(14, 17, 1);
+        grille.setColor(14, 18, 1);  
+        grille.setColor(14, 19, 1);
+        grille.setColor(14, 20, 1);
+        grille.setColor(14, 21, 1);
+        grille.setColor(14, 22, 1);
+        grille.setColor(14, 23, 1);
+        grille.setColor(14, 24, 2); //ici
+        grille.setColor(14, 25, 1);
+        grille.setColor(14, 26, 1);
+        grille.setColor(14, 27, 2);
+        grille.setColor(14, 28, 2);
+        grille.setColor(14, 29, 2);
+        
+
 
         System.out.println(grille);
 
