@@ -82,7 +82,7 @@ public class Propagation extends Algo1{
 
 
     public Grille coloration(){
-        Grille grille = G.clone();
+
         int n = G.getN();
         int m = G.getM();
 
@@ -127,9 +127,7 @@ public class Propagation extends Algo1{
             while ( !colonnesAVoir.isEmpty() ){ 
                 int j = colonnesAVoir.size()-1;              
                 int q = colonnesAVoir.get(j);
-
-            
-                
+        
                 ok = colorColonne(n-1, q, G.getSequencesColonne()[q].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
                     G.setPasComplete();

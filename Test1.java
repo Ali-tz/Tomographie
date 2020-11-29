@@ -26,11 +26,25 @@ public class Test1{
 
         Algo1 algo1 = new Algo1(grille);
 
-        grille.setColor(0, 0, 2);
-        grille.setColor(0, 1, 1);   
-        grille.setColor(0, 2, 2);
-        
-
+        grille.setColor(2, 0, 1);
+        grille.setColor(2, 1, 1);
+        grille.setColor(2, 2, 0);
+        grille.setColor(2, 3, 1);   
+        grille.setColor(2, 4, 1);
+        grille.setColor(2, 5, 2);
+        grille.setColor(2, 6, 1);
+        grille.setColor(2, 7, 2);
+        grille.setColor(2, 8, 1);   
+        grille.setColor(2, 9, 1);
+        grille.setColor(2, 10, 1);
+        grille.setColor(2, 11, 1);
+        grille.setColor(2, 12, 2);
+        grille.setColor(2, 13, 1);   
+        grille.setColor(2, 14, 2);
+        grille.setColor(2, 15, 1);
+        grille.setColor(2, 16, 1);
+        grille.setColor(2, 17, 1);
+        grille.setColor(2, 18, 1);  
 
 
         System.out.println(grille);
