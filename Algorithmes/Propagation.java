@@ -87,10 +87,10 @@ public class Propagation extends Algo1{
         int m = G.getM();
 
         ArrayList<Integer> lignesAVoir = new ArrayList<Integer>();
-        for(int i = 0 ; i < n ; i++){  lignesAVoir.add(i);}
+        for(int i = 0 ; i < n ; i++){  lignesAVoir.add((Integer)i); System.out.println(i + "  " +lignesAVoir.get((Integer)i) + '\n');}
 
         ArrayList<Integer> colonnesAVoir = new ArrayList<Integer>();
-        for(int i = 0; i < m; i++){ colonnesAVoir.add(i);    }
+        for(int i = 0; i < m; i++){ colonnesAVoir.add((Integer)i);    }
 
         int cpt = 0;
 
@@ -116,8 +116,9 @@ public class Propagation extends Algo1{
                         G.getCase(p, j).setRecent(false);
                     }
                         
-                    //System.out.println(grille);
                 }
+                System.out.println(p + '\n');
+                //System.out.println(G);
                 lignesAVoir.remove((Object) p); 
             }
 
@@ -139,8 +140,9 @@ public class Propagation extends Algo1{
                         G.getCase(i, q).setRecent(false);
                     }
                     
-                    //System.out.println(grille);
                 }
+                System.out.println(q+  '\n');
+                //System.out.println(G);
                 colonnesAVoir.remove((Object) q);
 
             }
