@@ -12,7 +12,7 @@ public class Main{
         String str = new String(Files.readAllBytes(Paths.get(args[0])));
 
         Grille grille = new Grille(str);
-        System.out.println(grille);
+        //System.out.println(grille);
 
         Propagation test = new Propagation(grille);
 
@@ -20,7 +20,7 @@ public class Main{
 
         System.out.println(grilleColo);
 
-        API_Grille f = new API_Grille(grille);
+        API_Grille f = new API_Grille(grilleColo);
         f.run();
 
     }

@@ -10,71 +10,69 @@ public class Propagation extends Algo1{
         super(G);
     }
 
-    public boolean colorLigne(int i, int j, int l){ 
-        int m = G.getM()-1;
-
-
+    public boolean colorLigne(int i, int j, int l, Grille grille){ 
+        int m = grille.getM()-1;
 
         if(!T(i,m,l)){
             return false;
         }
         if(j < 0){return true;}
 
-        if (G.getCouleur(i, j)!=0){
-            return colorLigne(i, j-1, l);
+        if (grille.getCouleur(i, j)!=0){
+            return colorLigne(i, j-1, l, grille);
         }
 
-        G.getCase(i, j).changeCouleur(2);
+        grille.getCase(i, j).changeCouleur(2);
 
         if(T(i,m,l)){
-            G.getCase(i, j).changeCouleur(1);
+            grille.getCase(i, j).changeCouleur(1);
             if(T(i,m,l)){
-                G.getCase(i, j).changeCouleur(0); 
+                grille.getCase(i, j).changeCouleur(0); 
             }else{
-                G.getCase(i, j).changeCouleur(2);
-                G.getCase(i, j).setRecent(true);
+                grille.getCase(i, j).changeCouleur(2);
+                grille.getCase(i, j).setRecent(true);
             }
-            return colorLigne(i, j-1, l);
+            return colorLigne(i, j-1, l, grille);
         }else{
-            G.getCase(i, j).changeCouleur(1);
+            grille.getCase(i, j).changeCouleur(1);
             if(T(i,m,l)){
-                G.getCase(i, j).setRecent(true);
-                return colorLigne(i, j-1, l);
+                grille.getCase(i, j).setRecent(true);
+                return colorLigne(i, j-1, l, grille);
             }
-            G.getCase(i, j).changeCouleur(0); 
+            grille.getCase(i, j).changeCouleur(0); 
             return false;
         }
     }
 
-    public boolean colorColonne(int i, int j, int l){ 
-        int n = G.getN()-1;
+    public boolean colorColonne(int i, int j, int l, Grille grille){ 
+        int n = grille.getN()-1;
         if(!T2(n,j,l)){
             return false;
         }
         if(i < 0){return true;}
 
-        if (G.getCouleur(i, j)!=0){
-            return colorColonne(i-1, j, l);
+        if (grille.getCouleur(i, j)!=0){
+            return colorColonne(i-1, j, l, grille);
         }
 
-        G.getCase(i, j).changeCouleur(2);
+        grille.getCase(i, j).changeCouleur(2);
 
         if(T2(n,j,l)){
-            G.getCase(i, j).changeCouleur(1);
+            grille.getCase(i, j).changeCouleur(1);
             if(T2(n,j,l)){
-                G.getCase(i, j).changeCouleur(0); 
+                grille.getCase(i, j).changeCouleur(0); 
             }else{
-                G.getCase(i, j).changeCouleur(2);
-                G.getCase(i, j).setRecent(true);
+                grille.getCase(i, j).changeCouleur(2);
+                grille.getCase(i, j).setRecent(true);
             }
-            return colorColonne(i-1, j, l);
+            return colorColonne(i-1, j, l, grille);
         }else{
-            G.getCase(i, j).changeCouleur(1);
+            grille.getCase(i, j).changeCouleur(1);
             if(T2(n ,j ,l)){
-                G.getCase(i, j).setRecent(true);
-                return colorColonne(i-1, j, l);
+                grille.getCase(i, j).setRecent(true);
+                return colorColonne(i-1, j, l, grille);
             }
-            G.getCase(i, j).changeCouleur(0); 
+            grille.getCase(i, j).changeCouleur(0); 
             return false;
         }
     }
@@ -95,23 +93,28 @@ public class Propagation extends Algo1{
 
         boolean ok;
         while(!lignesAVoir.isEmpty() || !colonnesAVoir.isEmpty()){
+            System.out.println("On commence par les lignes");
             for(int i = lignesAVoir.size()-1; i >= 0; i--){
-                ok = colorLigne(lignesAVoir.get(i), m-1, G.getSequencesLigne()[i].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
+                ok = colorLigne(lignesAVoir.get(i), m-1, grille.getSequencesLigne()[i].getTaille(), grille);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
-                    G.setPasComplete();
+                    grille.setPasComplete();
                     return G;
                 }
                 for(int j = 0; j < m; j++){
                     if(grille.getCase(i, j).getRecent()){
-                        colonnesAVoir.add(j);
-                        cpt++;
-                        G.getCase(i, j).setRecent(false);
+                        // if(colonnesAVoir.contains(j)){
+                            colonnesAVoir.add(j);
+                            //}
+                            cpt++;
+                            grille.getCase(i, j).setRecent(false);
+                        }
+                        lignesAVoir.remove((Object)i);
+                        //System.out.println(grille);
                     }
-                    lignesAVoir.remove((Object)i);
                 }
-            }
+            System.out.println("Puis les colonnes");
             for(int j = colonnesAVoir.size()-1; j>=0; j--){
-                ok = colorColonne(n-1,j,G.getSequencesColonne()[j].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
+                ok = colorColonne(n-1,j,G.getSequencesColonne()[j].getTaille(), grille);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
                     G.setPasComplete();
                     return G;
@@ -120,9 +123,10 @@ public class Propagation extends Algo1{
                     if(grille.getCase(i, j).getRecent()){
                         lignesAVoir.add(i);
                         cpt++;
-                        G.getCase(i, j).setRecent(false);
+                        grille.getCase(i, j).setRecent(false);
                     }
                     colonnesAVoir.remove((Object)j);
+                    //System.out.println(grille);
                 }
             }
             if(cpt == n*m){
