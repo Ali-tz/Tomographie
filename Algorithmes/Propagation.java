@@ -106,7 +106,7 @@ public class Propagation extends Algo1{
 
                 ok = colorLigne(p, m-1, gClone.getSequencesLigne()[p].getTaille(), gClone);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
-                    gClone.setPasComplete();
+                    gClone.setComplet(0);
                     System.out.println("Grille non solvable\n");
                     return gClone;
                 }
@@ -131,7 +131,7 @@ public class Propagation extends Algo1{
         
                 ok = colorColonne(n-1, q, gClone.getSequencesColonne()[q].getTaille(), gClone);    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
-                    gClone.setPasComplete();
+                    gClone.setComplet(0);
                     System.out.println("Grille non solvable\n");
                     return gClone;
                 }
@@ -147,18 +147,20 @@ public class Propagation extends Algo1{
             }
 
             if(cpt == n*m){
-                gClone.setComplete();
+                gClone.setComplet(1);
                 return gClone;
             }
         }
         return gClone;
     }
 
-
+    /*
     public Grille enumeration(){
         Grille g = this.coloration();
-        if(g.estComplete() ==  1){
-            this.set
+        if(g.complet() ==  0){
+            return null;
         }
+
     }
+    */
 }
