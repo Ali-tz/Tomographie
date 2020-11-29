@@ -98,8 +98,7 @@ public class Propagation extends Algo1{
         while(!lignesAVoir.isEmpty() || !colonnesAVoir.isEmpty()){
             System.out.println("On commence par les lignes");
             while ( !lignesAVoir.isEmpty() ){
-                int i = lignesAVoir.size()-1;
-                int p = lignesAVoir.get(i);
+                int p = lignesAVoir.get(0);
                 
 
                 ok = colorLigne(p, m-1, G.getSequencesLigne()[p].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
@@ -124,9 +123,8 @@ public class Propagation extends Algo1{
 
 
             System.out.println("Puis les colonnes");
-            while ( !colonnesAVoir.isEmpty() ){ 
-                int j = colonnesAVoir.size()-1;              
-                int q = colonnesAVoir.get(j);
+            while ( !colonnesAVoir.isEmpty() ){              
+                int q = colonnesAVoir.get(0);
         
                 ok = colorColonne(n-1, q, G.getSequencesColonne()[q].getTaille());    /* ok=Faux si détection d’impossibilité, ok=Vrai sinon */
                 if(ok == false){
