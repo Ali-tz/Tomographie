@@ -11,4 +11,6 @@ public class Algorithmes{
     public Grille getGrille(){
         return G;
     }
+
+    //public abstract void run();
 }

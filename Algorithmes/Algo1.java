@@ -9,8 +9,7 @@ public class Algo1 extends Algorithmes{
     }
 
     public boolean T(int i, int j, int l){
-
-        
+  
         if (j<0){
             return (l==0);
         }

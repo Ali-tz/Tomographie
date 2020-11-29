@@ -5,12 +5,12 @@ public class Grille{
     private Sequence[] sLigne, sColonne;
     private int tailleSeqColonne, tailleSeqLigne;
     private String s;
-    private int complete; /* 1-> complété -- -1->on ne sait pas -- 0-> pas complété*/
+    private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
 
     public Grille(String s){
 
         this.s = s;
-        this.complete = -1;
+        this.complet = -1;
 
         this.tailleSeqColonne = 0;
         this.tailleSeqLigne = 0;
@@ -49,14 +49,21 @@ public class Grille{
             }
         }
     }
-
+    
     public Grille clone(){
-        return new Grille(this.getSequences());
+        Grille G = new Grille(this.getSequences());
+        for(int j = 0; j < m; j++){
+            for(int i = 0; i < n; i++){
+                G.setColor(i, j, grille[i][j].getCouleur());
+            }
+        }
+        return G;
     }
-
+    
     public void setColor(int i,int j,int cl){
         this.getCase(i,j).changeCouleur(cl);
     }
+    
 
     public int getN(){
         return n;
@@ -66,15 +73,11 @@ public class Grille{
         return m;
     }
 
-    public int estComplete(){
-        return complete;
+    public int complet(){
+        return complet;
     }
-    public void setComplete(){
-        complete = 1;
-    }
-
-    public void setPasComplete(){
-        complete = 0;
+    public void setComplet(int i){
+        complet = i;
     }
 
     public Case getCase(int i, int j){
