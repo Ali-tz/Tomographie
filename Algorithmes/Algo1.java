@@ -15,10 +15,10 @@ public class Algo1 extends Algorithmes{
             return (l==0);
         }
 
-        if(l == 0){
-            for (int k =0; k<=j; k++){
+        if(l == 0){ 
+            for (int k =0; k<=j; k++){  /* Dans le cas ou on aurait réussi à placer toute les séquences on vérifie qu'il ne reste pas de case noir sur la ligne/colonne*/
                 if (G.getCouleur(i, k)== 2){
-                    return false;
+                    return false; /* Si c'est le case la ligne/colonne est incorrectement résolu */
                 }
             }
             return true;
@@ -42,7 +42,7 @@ public class Algo1 extends Algorithmes{
                 }
             } */
 
-            for(int k=0; k<j+1; k++){
+            for(int k=0; k<j+1; k++){ /* on regarde toutes les cases entre 0 et j pour voir si on peut placer la séquence*/
                 if (G.getCouleur(i, k)==1){
                     return false;
                 }
@@ -58,9 +58,14 @@ public class Algo1 extends Algorithmes{
                 return T(i,j+1,l);
             }
         } */
+
+
+        /*###########################################*/
+        /* Cas où j > sl-1 */
         
-        Boolean N = false; //boolean nous indiquant si l'on a croisé une case noir ou non
-        for (int k=j; k>j-sl;k--){ 
+        Boolean N = false; /*boolean nous indiquant si l'on a croisé une case noir ou non*/
+        
+        for (int k=j; k>j-sl;k--){ /* On regarde si on peut placer la séquence sl entre les case (i,j)et (i, j-sl-1)*/
             if (G.getCouleur(i, k)==2){
                 N = true;
             }
@@ -68,16 +73,17 @@ public class Algo1 extends Algorithmes{
                 if (N){
                     return false;
                 }                
-                return T(i,k-1,l);
+                return T(i,j-1,l);
             }
         }
 
         if (G.getCouleur(i, j-sl)==2){
-            if (G.getCouleur(i, j)==2){
+            if (G.getCouleur(i, j)==2){ /*La séquence l doit etre contrenu dans sl case et entouré de cases blanches de chaques cotés */
                 return false;
             }
             return T(i,j-1,l);
         }
+
 
         return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
@@ -141,7 +147,7 @@ public class Algo1 extends Algorithmes{
                 if (N){
                     return false;
                 }                
-                return T2(k-1,j,l);
+                return T2(i-1,j,l);
             }
         }
 
