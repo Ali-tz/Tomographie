@@ -166,7 +166,7 @@ public class Algo1 extends Algorithmes{
         
         if (sl==1 && N){
             return T2(i-sl-1,j,l-1)||T2(i-1,j,l-1);
-        } 
+        }
         return T2(i-sl-1,j,l-1)||T2(i-1,j,l);   
     }
 }
