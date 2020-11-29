@@ -28,7 +28,7 @@ public class Test1{
 
         grille.setColor(2, 0, 1);
         grille.setColor(2, 1, 1);
-        grille.setColor(2, 2, 0);
+        grille.setColor(2, 2, 2);
         grille.setColor(2, 3, 1);   
         grille.setColor(2, 4, 1);
         grille.setColor(2, 5, 2);
@@ -45,7 +45,7 @@ public class Test1{
         grille.setColor(2, 16, 1);
         grille.setColor(2, 17, 1);
         grille.setColor(2, 18, 1);  
-
+        grille.setColor(2, 19, 1);  
 
         System.out.println(grille);
 
