@@ -264,7 +264,7 @@ public class Grille{
         for (k1 = k+1; k1<n*m; k1++){
             i = k1/m;
             j = k1%m;
-            if (gClone.getCouleur(i, j)==0){
+            if (gClone.getCouleur(i, j)== 0){
                 Grille ABlanc = gClone.EnumRec(k1,1);
                 if (ABlanc == null){
                     return gClone.EnumRec(k1,2);
