@@ -65,90 +65,6 @@ public class Grille{
         this.getCase(i,j).changeCouleur(cl);
     }
     
-
-    public int getN(){
-        return n;
-    }
-
-    public int getM(){
-        return m;
-    }
-
-    public int complet(){
-        return complet;
-    }
-    public void setComplet(int i){
-        complet = i;
-    }
-
-    public Case getCase(int i, int j){
-        return grille[i][j];
-    }
-
-    public int getCouleur(int i, int j){
-        return this.getCase(i,j).getCouleur();
-    }
-
-    public Sequence[] getSequencesLigne(){
-        return sLigne;
-    }
-
-    public Sequence[] getSequencesColonne(){
-        return sColonne;
-    }
-
-    public String getSequences(){
-        return s;
-    }
-
-    public String afficheSeqligne(){
-        String s = "";
-        for (Sequence seq : sLigne){
-            s += seq + "\n";
-        }
-        return s + "\n";
-    }
-
-    public String afficheSeqColonne(){
-        String s = "";
-        for (Sequence seq : sColonne){
-            s += seq + "\n";
-        }
-        return s + "\n";
-    }
-
-
-    public String toString(){
-       String s = "";
-       
-       for(int i=0; i<tailleSeqColonne; i++){
-           for(int k=0; k<tailleSeqLigne; k++){
-               s+="  ";
-           }
-           s+=" ";
-           for(Sequence seq : sColonne){
-               if (seq.getTaille() <= i){ s+= "    ";}
-               else {s+=" " + seq.getSequence_i(i) + "  ";}
-           }
-           s+="\n";
-       }
-
-       for (int i=0;i<n;i++){
-           s+=sLigne[i].toString();
-           for(int j = 0; j<tailleSeqLigne-sLigne[i].getTaille();j++){
-               s+="  ";
-           }
-           s+="|";
-           for(int j=0;j<m;j++){
-               s+= " " + grille[i][j].getCouleur() + " |";
-           }
-           s+="\n";
-        }
-
-        return s;
-    }
-
-    
     public Grille enumeration(){
         Algorithme alg = new Algorithme(this);
         Grille A = alg.coloration();
@@ -276,9 +192,92 @@ public class Grille{
         return gClone;
 
     }
+
     
 
+    
 
+    public int getN(){
+        return n;
+    }
+
+    public int getM(){
+        return m;
+    }
+
+    public int complet(){
+        return complet;
+    }
+    public void setComplet(int i){
+        complet = i;
+    }
+
+    public Case getCase(int i, int j){
+        return grille[i][j];
+    }
+
+    public int getCouleur(int i, int j){
+        return this.getCase(i,j).getCouleur();
+    }
+
+    public Sequence[] getSequencesLigne(){
+        return sLigne;
+    }
+
+    public Sequence[] getSequencesColonne(){
+        return sColonne;
+    }
+
+    public String getSequences(){
+        return s;
+    }
+
+    public String afficheSeqligne(){
+        String s = "";
+        for (Sequence seq : sLigne){
+            s += seq + "\n";
+        }
+        return s + "\n";
+    }
+
+    public String afficheSeqColonne(){
+        String s = "";
+        for (Sequence seq : sColonne){
+            s += seq + "\n";
+        }
+        return s + "\n";
+    }
+
+
+    public String toString(){
+       String s = "";
+       
+       for(int i=0; i<tailleSeqColonne; i++){
+           for(int k=0; k<tailleSeqLigne; k++){
+               s+="  ";
+           }
+           s+=" ";
+           for(Sequence seq : sColonne){
+               if (seq.getTaille() <= i){ s+= "    ";}
+               else {s+=" " + seq.getSequence_i(i) + "  ";}
+           }
+           s+="\n";
+       }
+
+       for (int i=0;i<n;i++){
+           s+=sLigne[i].toString();
+           for(int j = 0; j<tailleSeqLigne-sLigne[i].getTaille();j++){
+               s+="  ";
+           }
+           s+="|";
+           for(int j=0;j<m;j++){
+               s+= " " + grille[i][j].getCouleur() + " |";
+           }
+           s+="\n";
+        }
+
+        return s;
+    }
 
 
 

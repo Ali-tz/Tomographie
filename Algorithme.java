@@ -44,7 +44,7 @@ public class Algorithme{
 
         /*------------------ GENERALISATION ------------------------------------*/
 
-    public boolean T(int i, int j, int l){  /* FONCTION T SUR LES LIGNES*/
+    public boolean T(int i, int j, int l, int[][] verite){  /* FONCTION T SUR LES LIGNES*/
   
         if (j<0){
             return (l==0);
@@ -88,8 +88,8 @@ public class Algorithme{
             if (G.getCouleur(i, k)==1){
                 if (N){
                     return false;
-                }                
-                return T(i,j-1,l);
+                }              
+                return T(i,j-1,l, verite);
             }
         }
 
@@ -97,14 +97,14 @@ public class Algorithme{
             if (G.getCouleur(i, j)==2){ /*La séquence l doit etre contrenu dans sl case et entouré de cases blanches de chaques cotés */
                 return false;
             }
-            return T(i,j-1,l);
+            return T(i,j-1,l, verite);
         }
         
         if (sl==1 && N){
-            return T(i,j-sl-1,l-1)||T(i,j-1,l-1);
+            return T(i,j-sl-1,l-1, verite)||T(i,j-1,l-1, verite);
         } 
 
-        return T(i,j-sl-1,l-1)||T(i,j-1,l);   
+        return T(i,j-sl-1,l-1, verite)||T(i,j-1,l, verite);   
     }
 
 
@@ -179,7 +179,8 @@ public class Algorithme{
         int m = grille.getM()-1;
         Algorithme gAlg = new Algorithme(grille);
 
-        if(!gAlg.T(i,m,l)){
+        int[][] verite = new int[m][l];
+        if(!gAlg.T(i,m,l, verite)){
             return false;
         }
         if(j < 0){return true;}
@@ -190,9 +191,9 @@ public class Algorithme{
 
         grille.getCase(i, j).changeCouleur(2);
 
-        if(gAlg.T(i,m,l)){
+        if(gAlg.T(i,m,l, verite)){
             grille.getCase(i, j).changeCouleur(1);
-            if(gAlg.T(i,m,l)){
+            if(gAlg.T(i,m,l, verite)){
                 grille.getCase(i, j).changeCouleur(0); 
             }else{
                 grille.getCase(i, j).changeCouleur(2);
@@ -201,7 +202,7 @@ public class Algorithme{
             return colorLigne(i, j-1, l, grille);
         }else{
             grille.getCase(i, j).changeCouleur(1);
-            if(gAlg.T(i,m,l)){
+            if(gAlg.T(i,m,l, verite)){
                 grille.getCase(i, j).setRecent(true);
                 return colorLigne(i, j-1, l, grille);
             }
@@ -209,7 +210,6 @@ public class Algorithme{
             return false;
         }
     }
-
 
 
     public boolean colorColonne(int i, int j, int l,  Grille grille){   /* FONTION DE COLORATION DES COLONNES */
@@ -248,7 +248,6 @@ public class Algorithme{
             return false;
         }
     }
-
     
     public Grille coloration(){ /* FONCTION DE COLORATION DE LA GRILLE */
 

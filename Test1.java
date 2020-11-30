@@ -57,9 +57,11 @@ public class Test1{
 
 
         System.out.println(grille);
-
+        int m = grille.getM();
+        int l = grille.getSequencesLigne().length;
+        int[][] verite = new int[m][l];
         for(int i=0; i<grille.getN(); i++){
-            System.out.println(algo.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
+            System.out.println(algo.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille(), verite));
 
         }
 
