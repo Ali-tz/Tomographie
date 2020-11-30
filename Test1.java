@@ -13,6 +13,7 @@ public class Test1{
         String str = new String(Files.readAllBytes(Paths.get(args[0])));
 
         System.out.println(str);
+        
         Grille grille = new Grille(str);
         
         /*
@@ -52,12 +53,13 @@ public class Test1{
         grille.setColor(14, 28, 2);
         grille.setColor(14, 29, 2);
         
+        Algorithme algo = new Algorithme(grille);
 
 
         System.out.println(grille);
 
         for(int i=0; i<grille.getN(); i++){
-            System.out.println(algo1.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
+            System.out.println(algo.T(i, grille.getM()-1, grille.getSequencesLigne()[i].getTaille()));
 
         }
 

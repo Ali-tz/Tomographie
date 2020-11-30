@@ -245,6 +245,8 @@ public class Grille{
 
     public Grille EnumRec(int k, int c){
         
+        System.out.println("k:" + k + "\n");
+
         if (k == n*m){
             return this;
         }
@@ -259,7 +261,7 @@ public class Grille{
 
 
         int k1;
-        for (k1 = k+1; k1<n*m; k++){
+        for (k1 = k+1; k1<n*m; k1++){
             i = k1/m;
             j = k1%m;
             if (this.getCouleur(i, j)==0){

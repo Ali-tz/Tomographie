@@ -14,7 +14,7 @@ public class Main{
 
         Algorithme test = new Algorithme(grille);
 
-        Grille grilleColo = test.coloration();
+        Grille grilleColo = grille.enumeration();
 
         System.out.println(grilleColo);
 
