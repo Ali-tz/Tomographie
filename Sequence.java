@@ -1,4 +1,3 @@
-package Grille;
 public class Sequence{
 
     private int[] sequence; /* Sequences de chiffres du jeu*/

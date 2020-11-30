@@ -1,6 +1,5 @@
 import  javax.swing.*;
 import  java.awt.*;
-import Grille.*;
 
 
 public class API_Grille{

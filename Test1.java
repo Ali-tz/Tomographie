@@ -3,9 +3,6 @@ import java.io.*;
 //import  javax.swing.*;
 //import  java.awt.*;
 
-import Grille.*;
-import Algorithmes.*;
-
 public class Test1{
 
     public static void main(String[] args) throws IOException {
@@ -22,9 +19,7 @@ public class Test1{
         API_Grille f = new API_Grille(grille);
         f.run(); */
         
-        
-
-        Algo1 algo1 = new Algo1(grille);
+    
 
         grille.setColor(14, 0, 1);
         grille.setColor(14, 1, 1);

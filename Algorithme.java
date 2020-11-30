@@ -1,10 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
-import Grille.*;
-
-
 public class Algorithme{
 
     private Grille G;

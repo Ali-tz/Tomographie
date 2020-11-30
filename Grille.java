@@ -1,6 +1,3 @@
-package Grille;
-
-import Algorithme.*;
 import java.util.ArrayList;
 
 public class Grille{

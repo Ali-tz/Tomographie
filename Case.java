@@ -1,4 +1,3 @@
-package Grille;
 public class Case{
 
     private int x,y;

@@ -1,8 +1,5 @@
 import java.nio.file.*;
 import java.io.*;
-import Grille.*;
-import Algorithmes.*;
-
 
 public class Main{
     public static void main(String[] args) throws IOException {
