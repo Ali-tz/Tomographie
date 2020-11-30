@@ -3,6 +3,7 @@ import java.io.*;
 import Grille.*;
 import Algorithmes.*;
 
+
 public class Main{
     public static void main(String[] args) throws IOException {
         if(args.length != 1){
@@ -14,7 +15,7 @@ public class Main{
         Grille grille = new Grille(str);
         //System.out.println(grille);
 
-        Propagation test = new Propagation(grille);
+        Algorithme test = new Algorithme(grille);
 
         Grille grilleColo = test.coloration();
 
