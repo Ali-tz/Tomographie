@@ -106,7 +106,7 @@ public class Algorithme{
         
         if(G.getCouleur(i,j)==2){
             return T(i, j-sl-1, l-1 ,verite);
-        }
+        } 
 
         return T(i,j-sl-1,l-1, verite)||T(i,j-1,l, verite);   
     }
@@ -174,7 +174,7 @@ public class Algorithme{
         if (sl==1 && N){
             return T2(i-sl-1,j,l-1)||T2(i-1,j,l-1);
         }
-
+        
         if(G.getCouleur(i,j)==2){
             return T2(i-sl-1,j,l-1);
         }
