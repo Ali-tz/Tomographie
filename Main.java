@@ -12,11 +12,11 @@ public class Main{
         Grille grille = new Grille(str);
         //System.out.println(grille);
 
-        //Algorithme test = new Algorithme(grille);
+        Algorithme test = new Algorithme(grille);
 
-        //Grille grilleColo1 = test.coloration();
+        Grille grilleColo = test.coloration();
 
-        Grille grilleColo = grille.enumeration();
+        //Grille grilleColo = grille.enumeration();
 
         System.out.println(grilleColo);
 
