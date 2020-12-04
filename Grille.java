@@ -1,12 +1,54 @@
 import java.util.ArrayList;
 
+
+/**
+ * Grille is the class representing a matrix of Case and executes major algorithms.
+ * Key class for this poject.
+ * 
+ * @author Sylvain Rakotomalala, Ali Touzi
+ */
 public class Grille{
-    private int n, m;
+    //  ************************************************************************
+
+    //  Fields
+
+    //  ************************************************************************
+
+    /**
+     * private field, represents the number of lines of the matrix
+     */
+    private int n;
+
+    /**
+     * private field, represents the number of columns of the matrix
+     */
+    private int m;
+
+    /**
+     * private field, represents the matrix fulfilled by cases of Case
+     */
     private Case[][] grille;
-    private Sequence[] sLigne, sColonne;
-    private int tailleSeqColonne, tailleSeqLigne;
+
+    /**
+     * private field, represents the sequences of the length of the blocks for each line
+     */
+    private Sequence[] sLigne;
+
+    /**
+     * private field, represents the sequences of the length of the blocks for each columns
+     */
+    private Sequence[] sColonne;
+    private int tailleSeqColonne;
+    private int tailleSeqLigne;
     private String s;
     private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
+
+
+    //  *************************************************************************
+
+    //  Constructors
+
+    //  *************************************************************************
 
     public Grille(String s){
 
@@ -51,6 +93,12 @@ public class Grille{
         }
     }
     
+
+    //  *************************************************************************
+
+    //  Public methods
+
+    //  *************************************************************************
     public Grille clone(){
         Grille G = new Grille(this.getSequences());
         for(int j = 0; j < m; j++){

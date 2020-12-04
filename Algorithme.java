@@ -103,7 +103,7 @@ public class Algorithme{
         if (sl==1 && N){
             return T(i,j-sl-1,l-1, verite)||T(i,j-1,l-1, verite);
         } 
-
+        
         return T(i,j-sl-1,l-1, verite)||T(i,j-1,l, verite);   
     }
 

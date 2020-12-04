@@ -97,6 +97,11 @@ public class Case{
     }
 
     
+    //  *************************************************************************
+
+    //  Public methods
+
+    //  *************************************************************************
     /**
      * This method changes the color of the case
      * 
@@ -150,8 +155,8 @@ public class Case{
      * @return The value of {@link #x} of this {@link #Case}
      *
      * @see Case#y
-     * /
-    public int getY(){
+     */
+     public int getY(){
         return y;
     }
 
