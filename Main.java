@@ -12,7 +12,7 @@ public class Main{
         Grille grille = new Grille(str);
         //System.out.println(grille);
 
-        Algorithme test = new Algorithme(grille);
+        //Algorithme test = new Algorithme(grille);
 
         //Grille grilleColo1 = test.coloration();
 
