@@ -30,16 +30,28 @@ public class Grille{
     private Case[][] grille;
 
     /**
-     * private field, represents the sequences of the length of the blocks for each line
+     * private field, represents the sequences of the length of the lines' blocks
      */
     private Sequence[] sLigne;
 
     /**
-     * private field, represents the sequences of the length of the blocks for each columns
+     * private field, represents the sequences of the length of the columns' blocks 
      */
     private Sequence[] sColonne;
+
+    /**
+     * private field, reprensents the length of {@link #sColonne}
+     */
     private int tailleSeqColonne;
+
+    /**
+     * private field, reprensents the length of {@link #sLigne}
+     */
     private int tailleSeqLigne;
+
+    /**
+     * private field, represents 
+     */
     private String s;
     private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
 
