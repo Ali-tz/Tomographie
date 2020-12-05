@@ -15,7 +15,7 @@ public class Case{
     //  ************************************************************************
 
     /**
-     * private field, represents the x-axis
+     * Private field, represents the x-axis.
      * 
      * @see Case#Case(int, int, int)
      * @see Case#Case(int, int)
@@ -24,7 +24,7 @@ public class Case{
     private int x;
 
     /**
-     * private field, represents the y-axis
+     * Private field, represents the y-axis.
      * 
      * @see Case#Case(int, int, int)
      * @see Case#Case(int, int)
@@ -34,7 +34,7 @@ public class Case{
 
 
     /**
-     * private field, represents the color of this {@link #Case}; 0 means no color, 1 means white and 2 means black
+     * Private field, represents the color of this {@link #Case}; 0 means no color, 1 means white and 2 means black.
      * 
      * @see Case#Case(int, int, int)
      * @see Case#Case(int, int)
@@ -44,7 +44,7 @@ public class Case{
     private int couleur; 
 
     /**
-     * private field, tells if this {@link #Case} was recently visited
+     * Private field, tells if this {@link #Case} was recently visited.
      * 
      * @see Case#getRecent()
      * @see Case#setRecent(boolean)
@@ -97,11 +97,13 @@ public class Case{
     }
 
     
+    
     //  *************************************************************************
 
     //  Public methods
 
     //  *************************************************************************
+    
     /**
      * This method changes the color of the case
      * 

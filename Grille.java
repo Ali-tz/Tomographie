@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * @author Sylvain Rakotomalala, Ali Touzi
  */
 public class Grille{
+
+
     //  ************************************************************************
 
     //  Fields
@@ -15,47 +17,65 @@ public class Grille{
     //  ************************************************************************
 
     /**
-     * private field, represents the number of lines of this {@link #Grille}.
+     * Private field, represents the number of lines of this {@link #Grille}.
+     * 
+     * @see Grille#getN()
      */
     private int n;
 
     /**
-     * private field, represents the number of columns of this {@link #Grille}.
+     * Private field, represents the number of columns of this {@link #Grille}.
+     * 
+     * @see Grille#getM()
      */
     private int m;
 
     /**
-     * private field, represents this {@link #Grille} fulfilled by cases of {@link #Case}.
+     * Private field, represents this {@link #Grille} fulfilled by cases of {@link #Case}.
+     * 
+     * @see Grille#EnumRec(int, int)
+     * @see Grille#colorierEtPropager(int, int, int)
+     * @see Grille#clone()
+     * @see Grille#enumeration()
+     * @see Grille#toString()
+     * @see Grille#Grille(String)
      */
     private Case[][] grille;
 
     /**
-     * private field, represents the sequences of the length of the lines' blocks.
+     * Private field, represents the sequences of the length of the lines' blocks.
+     * 
+     * @see Grille#sLigne
      */
     private Sequence[] sLigne;
 
     /**
-     * private field, represents the sequences of the length of the columns' blocks.
+     * Private field, represents the sequences of the length of the columns' blocks.
+     * 
+     * @see Grille#afficheSeqColonne()
      */
     private Sequence[] sColonne;
 
     /**
-     * private field, reprensents the length of {@link #sColonne}.
+     * Private field, reprensents the length of {@link #sColonne}.
      */
     private int tailleSeqColonne;
 
     /**
-     * private field, reprensents the length of {@link #sLigne}.
+     * Private field, reprensents the length of {@link #sLigne}.
      */
     private int tailleSeqLigne;
 
     /**
-     * private field, used to store the parsed file used to build this {@link #Grille}.
+     * Private field, used to store the parsed file used to build this {@link #Grille}.
      */
     private String s;
 
     /**
-     * private fiels, tells if this {@link #Grille} is fullfield. 1 means it's completed, 0 means uncompletable and -1 we don't know.
+     * Private fiels, tells if this {@link #Grille} is fullfield. 1 means it's completed, 0 means uncompletable and -1 we don't know.
+     * 
+     * @see Grille#setComplet(int)
+     * @see Grille#complet()
      */
     private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
 
@@ -72,6 +92,10 @@ public class Grille{
      * The {@link #grille} will be set to empty and {@link #complet} will be set to -1.
      * 
      * @param s Supposed to contain the block's sequences for the lines and columns.
+     * 
+     * @see Grille#s
+     * @see Grille#grille
+     * @see Grille#complet
      */
     public Grille(String s){
 
@@ -127,6 +151,8 @@ public class Grille{
      * This method returns a copy of this {@link #Grille}
      * 
      * @return A clone of this {@link #Grille}.
+     * 
+     * @see Grille#grille
      */
     public Grille clone(){
         Grille G = new Grille(this.getSequences());
@@ -147,6 +173,7 @@ public class Grille{
      * @param j The y-axis coordinate of the {@Clink #Case} in this {@link #Grille}.
      * @param cl The new color of the {@Clink #Case} in this {@link #Grille}.
      * 
+     * 
      */
     public void setColor(int i,int j,int cl){
         this.getCase(i,j).changeCouleur(cl);
@@ -157,6 +184,8 @@ public class Grille{
      * This method returns this {@link #Grille} colored and if possible completed.
      * 
      * @return This {@link #Grille} completed if possible.
+     * 
+     * @see Grille#grille
      */
     public Grille enumeration(){
         Algorithme alg = new Algorithme(this);
@@ -190,6 +219,8 @@ public class Grille{
      * 
      * @return A clone of his {@link #Grille} colored and if possible completed.
      * 
+     * 
+     * @see Grille#grille
      */
     public Grille colorierEtPropager(int i1, int j1, int c){ /* FONCTION DE COLORATION DE LA GRILLE */
 
@@ -261,12 +292,14 @@ public class Grille{
 
     
     /**
-     * This method returns a clone of {@link #Grille} colored and if possible completed, else it's uncompletable
+     * This method returns a clone of {@link #Grille} colored and if possible completed, else it's uncompletable.
      * 
      * @param k Index of a {@link #Case} in this {@link #Grille}.
-     * @param c Color of the {@link #Case}
+     * @param c Color of the {@link #Case}.
      * 
-     * @return A clone of {@link #Grille} colored and if possible completed, else it's uncompletable
+     * @return A clone of {@link #Grille} colored and if possible completed, else it's uncompletable.
+     * 
+     * @see Grille#grille
      */
     public Grille EnumRec(int k, int c){
         
@@ -302,51 +335,115 @@ public class Grille{
     }
 
     
-
-    
     /**
-     * This method allows us to reach the field {@link #n}
-     * @return The number of lines of this {@link #Grille}
+     * This method returns the value of the field {@link #n} in this {@link #Grille}.
+     * 
+     * @return The value of th field {@link #n} in this {@link #Grille}.
+     * 
+     * @see Grille#n
      */
     public int getN(){
         return n;
     }
 
     /**
+     * This method returns the value of the field {@link #m} in this {@link #Grille}.
+     * @return The value of the field {@link #m} in this {@link #Grille}.
      * 
-     * @return
+     * @see Grille#m
      */
     public int getM(){
         return m;
     }
 
+    /**
+     * This method returns the value of the field {@link #complet} in this {@link #Grille}.
+     * 
+     * @return The value of the field {@link #complet} in this {@link #Grille}.
+     * 
+     * @see Grille#complet
+     */
     public int complet(){
         return complet;
     }
+
+    /**
+     * This method changes the value of the field {@link #complet} in this {@link #Grille}.
+     * 
+     * @param i The value that will be set on the field {@link #complet}.
+     * 
+     * @see Grille#complet
+     */
     public void setComplet(int i){
         complet = i;
     }
 
+    /**
+     * This method returns the (i,j) {@link #Case} of this {@link #Grille}.
+     * 
+     * @param i The x-axis coordinate of the Case we want to reach.
+     * @param j The y-axis coordinate of the Case we want to reach.
+     * 
+     * @return The (i,j) {@link #Case} of this {@link #Grille}.
+     * 
+     * @see Grille#grille
+     */
     public Case getCase(int i, int j){
         return grille[i][j];
     }
 
+    /**
+     * This method allows us to know the color of the (i,j) {@link #Case} in this {@link #Grille}.
+     * 
+     * @param i The x-axis coordinate of the Case we want to reach.
+     * @param j The y-axis coordinate of the Case we want to reach.
+     * 
+     * @return The color of the (i,j) {@link #Case} in this {@link #Grille}.
+     */
     public int getCouleur(int i, int j){
         return this.getCase(i,j).getCouleur();
     }
 
+    /**
+     * This method returns the value of the field {@link #sCLigne} of this {@link #Grille}.
+     * 
+     * @return The field {@link #sLigne} of this {@link #Grille}.
+     * 
+     * @see Grille#sLigne
+     */
     public Sequence[] getSequencesLigne(){
         return sLigne;
     }
 
+    /**
+     * This method returns the value of the field {@link #sColonne} of this {@link #Grille}.
+     * 
+     * @return The value of the field {@link #sColonne} of this {@link #Grille}.
+     * 
+     * @see Grille#sColonne
+     */
     public Sequence[] getSequencesColonne(){
         return sColonne;
     }
 
+    /**
+     * This returns the value of the field {@link #s} of this {@link #Grille}.
+     * 
+     * @return The value of the field {@link #s} of this {@link #Grille}.
+     * 
+     * @see Grille#s
+     */
     public String getSequences(){
         return s;
     }
 
+    /**
+     * This methods store the values in {@link #sLigne} in this {@link #Grille} in a String in order to see it in the trerminal.
+     * 
+     * @return A String that contains this {@link #Grille}.
+     * 
+     * @see Grille#sLigne
+     */
     public String afficheSeqligne(){
         String s = "";
         for (Sequence seq : sLigne){
@@ -355,6 +452,13 @@ public class Grille{
         return s + "\n";
     }
 
+    /**
+     * This methods store the values in {@link #sColonne} in this {@link #Grille} in a String in order to see it in the trerminal.
+     * 
+     * @return A String that contains this {@link #Grille}.
+     * 
+     * @see Grille#sColonne
+     */
     public String afficheSeqColonne(){
         String s = "";
         for (Sequence seq : sColonne){
@@ -363,7 +467,14 @@ public class Grille{
         return s + "\n";
     }
 
-
+    /**
+     * This methods store this {@link #Grille} in a String in order to see it in the trerminal.
+     * 
+     * @return A String that contains this {@link #Grille}.
+     * 
+     * @see Grille#grille
+     */
+    @Override
     public String toString(){
        String s = "";
        

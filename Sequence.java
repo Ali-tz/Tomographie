@@ -1,8 +1,42 @@
+/**
+ * Sequence is the class representing a table of numbers representing the blocks to put in our {@link #Grille}.
+ * Corner stone class of this poject.
+ * 
+ * @author Sylvain Rakotomalala, Ali Touzi
+ */
 public class Sequence{
 
-    private int[] sequence; /* Sequences de chiffres du jeu*/
-    private int taille; /* nombre de sequences de chiffres*/
 
+    //  ************************************************************************
+
+    //  Fields
+
+    //  ************************************************************************
+
+    /**
+     * Private field, table containing the length of the blocks to put in the {@link #Grille}.
+     */
+    private int[] sequence;
+
+    /**
+     * Private field, length of this {@link #Sequence}, indicates the number of blocks 
+     */
+    private int taille; 
+    
+
+    //  *************************************************************************
+
+    //  Constructors
+
+    //  *************************************************************************
+
+    /**
+     * Parametrized constructor.
+     * 
+     * This constructor turns a String into a table of int.
+     * 
+     * @param s Contains the value of the blocks for this {@link #Sequence}.
+     */
     public Sequence(String s){
         if(s.length() == 0){
             this.taille = 0;
@@ -16,11 +50,29 @@ public class Sequence{
             }
         }
     }
-   
+
+
+    
+    //  *************************************************************************
+
+    //  Public methods
+
+    //  *************************************************************************
+
+    /**
+     * This method returns the value of the field {@link #taille} of this {@link #Sequence}.
+     *
+     *  @return The value of the field {@link #taille} of this {@link #Sequence}.
+     */
     public int getTaille(){
         return taille;
     }
 
+
+    /**
+     * This method returns the value of the field {@link #sequence} of this {@link #Sequence}.
+     * @return The value ofthe field {@link #sequence} of this {@link #Sequence}.
+     */
     public int[] getSequence(){
         if(sequence == null){
             System.out.println("Erreur: Sequence non initialisée");
@@ -28,10 +80,20 @@ public class Sequence{
         return sequence;
     }
 
+    /**
+     * This method return the value contained in {@link #sequence}[i] of this {@link #Sequence}.
+     * 
+     * @return The value contained in {@link #sequence}[i] of this {@link #Sequence}.
+     */
     public int getSequence_i(int i){
         return sequence[i];
     }
 
+    /**
+     * This method stores in a String the value of each block from this {@link #Sequence}.
+     * 
+     * @return  A String that contains the value of each block from this {@link #Sequence}
+     */
     public String toString(){
         String s = "";
         for ( int i : this.sequence){
