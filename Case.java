@@ -7,7 +7,6 @@
 public class Case{
 
 
-
     //  ************************************************************************
 
     //  Fields
@@ -54,6 +53,7 @@ public class Case{
 
 
 
+
     //  *************************************************************************
 
     //  Constructors
@@ -65,7 +65,7 @@ public class Case{
      * 
      * The {@link #recent} value is always set to false.
      * 
-     * @param x The coordinate value  that will be set on the x-axis to this {@link #Case}.
+     * @param x The coordinate value that will be set on the x-axis to this {@link #Case}.
      * @param y The coordinate value that will be set on the y-axis to this {@link #Case}. 
      * @param couleur The color value that will be set on couleur to this {@link #Case}.
      * 
@@ -95,6 +95,8 @@ public class Case{
     public Case(int x, int y){
         this(x, y, 0);
     }
+
+
 
     
     

@@ -1,11 +1,56 @@
 import  javax.swing.*;
 import  java.awt.*;
 
-
+/**
+ * API_Grille creates a graphic display of {@link Grille}.
+ * 
+ * @author Sylvain Rakotomalala, Ali Touzi
+ */
 public class API_Grille{
+
+
+	//  ************************************************************************
+
+    //  Fields
+
+    //  ************************************************************************
+
+	/**
+	 * Private field, Grille which will be shown.
+	 * 
+	 * @see API_Grille#run()
+	 * @see API_Grille#API_Grille(Grille)
+	 * @see API_Grille#getGrille()
+	 */
 	private Grille G;
+
+	/**
+	 * Private field, panel of the Grille.
+	 * 
+	 * @see API_Grille#API_Grille(Grille)
+	 * @see API_Grille#getGrille()
+	 */
 	private JPanel pan;
 
+
+
+
+	//  *************************************************************************
+
+    //  Constructors
+
+    //  *************************************************************************
+	
+	/**
+	 * Parametrized constructor.
+	 * 
+	 * The {@link #pan} is created with the parameter G.
+	 * 
+	 * @param G Grille used to create the panel {@link #pan}.
+	 * 
+	 * @see API_Grille#pan
+	 * 
+	 */
 	public API_Grille(Grille G){
 
 		this.G = G;
@@ -37,6 +82,20 @@ public class API_Grille{
 		
 	}
 
+
+
+
+	//  *************************************************************************
+
+    //  Public methods
+
+    //  *************************************************************************
+	
+	/**
+	 * This method display on screen the value of {@link #G}.
+	 * 
+	 * @see API_Grille#G
+	 */
 	public void run(){
 		int y = this.pan.getHeight();
 		int x = this.pan.getWidth();
@@ -54,10 +113,18 @@ public class API_Grille{
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+
+	/**
+	 * This method returns the value of {@link #G}.
+	 * 
+	 * @return The value of {@link #G}.
+	 * 
+	 * @see API_Grille#G
+	 * @see API_Grille#pan
+	 */
 	public JPanel getGrille(){
 		return pan;
 	}
-
 }
 
 

@@ -15,14 +15,24 @@ public class Sequence{
 
     /**
      * Private field, table containing the length of the blocks to put in the {@link #Grille}.
+     * 
+     * @see Sequence#Sequence(String)
+     * @see Sequence#getSequence()
+     * @see Sequence#getSequence_i(int)
+     * @see Sequence#toString()
+     * 
      */
     private int[] sequence;
 
     /**
-     * Private field, length of this {@link #Sequence}, indicates the number of blocks 
+     * Private field, length of this {@link #Sequence}, indicates the number of blocks.
+     * 
+     * @see Sequence#getTaille()
      */
     private int taille; 
     
+
+
 
     //  *************************************************************************
 
@@ -36,6 +46,8 @@ public class Sequence{
      * This constructor turns a String into a table of int.
      * 
      * @param s Contains the value of the blocks for this {@link #Sequence}.
+     * 
+     * @see Sequence#sequence
      */
     public Sequence(String s){
         if(s.length() == 0){
@@ -52,6 +64,8 @@ public class Sequence{
     }
 
 
+
+
     
     //  *************************************************************************
 
@@ -62,7 +76,9 @@ public class Sequence{
     /**
      * This method returns the value of the field {@link #taille} of this {@link #Sequence}.
      *
-     *  @return The value of the field {@link #taille} of this {@link #Sequence}.
+     * @return The value of the field {@link #taille} of this {@link #Sequence}.
+     * 
+     * @see Sequence#taille
      */
     public int getTaille(){
         return taille;
@@ -72,6 +88,8 @@ public class Sequence{
     /**
      * This method returns the value of the field {@link #sequence} of this {@link #Sequence}.
      * @return The value ofthe field {@link #sequence} of this {@link #Sequence}.
+     *
+     * @see Sequence#sequence
      */
     public int[] getSequence(){
         if(sequence == null){
@@ -84,6 +102,8 @@ public class Sequence{
      * This method return the value contained in {@link #sequence}[i] of this {@link #Sequence}.
      * 
      * @return The value contained in {@link #sequence}[i] of this {@link #Sequence}.
+     * 
+     * @see Sequence#sequence
      */
     public int getSequence_i(int i){
         return sequence[i];
@@ -92,8 +112,11 @@ public class Sequence{
     /**
      * This method stores in a String the value of each block from this {@link #Sequence}.
      * 
-     * @return  A String that contains the value of each block from this {@link #Sequence}
+     * @return A String that contains the value of each block from this {@link #Sequence}
+     * 
+     * @see Sequence#sequence
      */
+    @Override
     public String toString(){
         String s = "";
         for ( int i : this.sequence){

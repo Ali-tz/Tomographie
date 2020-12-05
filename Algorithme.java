@@ -1,19 +1,64 @@
 import java.util.ArrayList;
 
+/**
+ * This class contains bsics algorithms used in bigger algorithms implemented in Grille Class.
+ * Key class for this poject.
+ * 
+ * @author Sylvain Rakotomalala, Ali Touzi
+ */
 public class Algorithme{
 
+    //  ************************************************************************
+
+    //  Fields
+
+    //  ************************************************************************
+
+    /**
+     * Private parameter, {@link #Grille} taht will have algorithms applied on it.
+     */
     private Grille G;
     
     
+    //  *************************************************************************
+
+    //  Constructors
+
+    //  *************************************************************************
+
+    /**
+     * Parametrized constructor.
+     * 
+     * @param G The value that will be set on this {@link #G}.
+     */
     public Algorithme(Grille G){this.G = G;}
 
-    
-    /**
-     * 
-     * PARTIE 1
-     * 
-     * /
 
+
+
+
+
+    //  *************************************************************************
+
+    //  Public methods
+
+    //  *************************************************************************
+ 
+
+
+    //  ------------------------------------------------------------------------
+
+    //  Première étape 
+    
+    //  ------------------------------------------------------------------------
+    
+    /*
+     * This method tells us if the lines of {@link #G} can be completed with their {@link #Sequence}.
+     * @param i Line we work on
+     * @param j Column we start with
+     * @param l Number of blocks.
+     * @return True if we can solve the line, false if we can not.
+     */
      /*public boolean T(int i, int j, int l){
 
         if (l==0){
@@ -42,9 +87,24 @@ public class Algorithme{
     } */
    
 
-        /*------------------ GENERALISATION ------------------------------------*/
 
-    public boolean T(int i, int j, int l, int[][] verite){  /* FONCTION T SUR LES LIGNES*/
+
+    //  ------------------------------------------------------------------------
+
+    //  Généralisation
+    
+    //  ------------------------------------------------------------------------
+
+    /**
+     * This method tells us if we can solve the lines regarding the colors of the different {@link #Case} of the line.
+     * 
+     * @param i Line we work on
+     * @param j Column we start with
+     * @param l Number of blocks.
+     * @param verite Matrix used for the dynamic programmation.
+     * @return True if we can solve the line, false if we can not.
+     */
+    public boolean T(int i, int j, int l, int[][] verite){  
   
         if (j<0){
             return (l==0);
@@ -113,10 +173,23 @@ public class Algorithme{
 
 
 
-        /*------------------ PROPAGATION ------------------------------------*/
 
+    //  ------------------------------------------------------------------------
+
+    //  Propagation
     
-    public boolean T2(int i, int j, int l){ /* FONCTION T SUR LES COLONNES*/
+    //  ------------------------------------------------------------------------
+
+    /**
+     * This method tells us if we can solve the columns regarding the colors of the different {@link #Case} of the line in {@link #G} in this {@link #Algorithme}.
+     * 
+     * @param i Line we start with  
+     * @param j Columnwe work on
+     * @param l Number of blocks
+     * @paramveriteMatrix used for the dynamic programmation.
+     * @return True if we can solve the line, false if we can not.
+     */
+    public boolean T2(int i, int j, int l){ 
 
         if (i<0){
             return (l==0);
@@ -183,7 +256,17 @@ public class Algorithme{
     }
 
     
-
+    /**
+     * This method colors the lines of the {@link #Grille} {@link #G} in this {@link #Algorithme}.
+     * 
+     * @param i Line we work on
+     * @param j Column we start with
+     * @param l Number of blocks.
+     * @param grille Value that will be set on the field {@link #G} of an {@link #Algorithme}
+     * @return The true if the line i of grille has been colored, false if it can not be colored, in this case the line is not colored.
+     * 
+     * @see Algorithme#G
+     */
     public boolean colorLigne(int i, int j, int l, Grille grille){  /* FONTION DE COLORATION DES LIGNES */
         int m = grille.getM()-1;
         Algorithme gAlg = new Algorithme(grille);
@@ -220,8 +303,19 @@ public class Algorithme{
         }
     }
 
-
-    public boolean colorColonne(int i, int j, int l,  Grille grille){   /* FONTION DE COLORATION DES COLONNES */
+    /**
+     * This method colors the lines of the {@link #Grille} {@link #G}.
+     * 
+     * @param i Line we start with
+     * @param j Column we work on
+     * @param l Number of blocks.
+     * @param grille Value that will be set on the field {@link #G} of an {@link #Algorithme}
+     * @return The true if the column j of grille has been colored, false if it can not be colored, in this case the column is not colored.
+     * 
+     * @see Algorithme#G
+     * 
+     */
+    public boolean colorColonne(int i, int j, int l,  Grille grille){  
 
         Algorithme gAlg = new Algorithme(grille);
         int n = grille.getN()-1;
@@ -258,6 +352,14 @@ public class Algorithme{
         }
     }
     
+
+    /**
+     * This method colors, if possible, the clone of {@link #G} from this {@link #Algorithme} and returns this one.
+     * 
+     * @return A colored, if possible, copy of {@link #G} from this {@link #Algorithme}, else just the copy.
+     * 
+     * @see Algorithme#G
+     */
     public Grille coloration(){ /* FONCTION DE COLORATION DE LA GRILLE */
 
         Grille gClone = G.clone();

@@ -80,6 +80,8 @@ public class Grille{
     private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
 
 
+
+
     //  *************************************************************************
 
     //  Constructors
@@ -141,9 +143,11 @@ public class Grille{
     }
     
 
+
+
     //  *************************************************************************
 
-    //  Public methods
+    //  Public methods 
 
     //  *************************************************************************
 
@@ -504,7 +508,5 @@ public class Grille{
 
         return s;
     }
-
-
 
 }
