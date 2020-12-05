@@ -33,6 +33,7 @@ public class Main{
         long timeElapsed = 0;
     
         
+        /* Q10
         for(int i=0;i<10;i++){
             long start = System.nanoTime();
   
@@ -45,7 +46,22 @@ public class Main{
         } 
         
       
-        System.out.println(timeElapsed/11);
+        System.out.println(timeElapsed/11);*/
+
+        /* Q14
+        for(int i=0;i<10;i++){
+            long start = System.nanoTime();
+  
+            Algorithme test = new Algorithme(grille);
+            Grille grilleColo = grille.enumeration();
+            long finish = System.nanoTime();
+            System.out.println(finish - start);
+            timeElapsed += finish - start;
+        
+        } 
+        
+      
+        System.out.println(timeElapsed/11);*/
 
         //Grille grilleColo = grille.enumeration();
 
