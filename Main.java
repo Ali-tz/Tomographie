@@ -1,5 +1,9 @@
 import java.nio.file.*;
+import java.time.*;
 import java.io.*;
+
+
+
 
 /**
  * Main class
@@ -22,23 +26,33 @@ public class Main{
         
         String str = new String(Files.readAllBytes(Paths.get(args[0])));
 
-        Grille grille = new Grille(str);
         //System.out.println(grille);
+        
+        Grille grille = new Grille(str);
 
-        Algorithme test = new Algorithme(grille);
-
-        long start = System.currentTimeMillis();
-        Grille grilleColo = test.coloration();
-        long finish = System.currentTimeMillis();
-        long timeElapsed = finish - start;
-        System.out.println(timeElapsed);
+        long timeElapsed = 0;
+    
+        
+        for(int i=0;i<10;i++){
+            long start = System.nanoTime();
+  
+            Algorithme test = new Algorithme(grille);
+            Grille grilleColo = test.coloration();
+            long finish = System.nanoTime();
+            System.out.println(finish - start);
+            timeElapsed += finish - start;
+        
+        } 
+        
+      
+        System.out.println(timeElapsed/11);
 
         //Grille grilleColo = grille.enumeration();
 
         //System.out.println(grilleColo);
 
-        API_Grille f = new API_Grille(grilleColo);
-        f.run();
+        //API_Grille f = new API_Grille(grilleColo);
+        //f.run();
 
     }
   
