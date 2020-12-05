@@ -63,7 +63,7 @@ public class Case{
     /**
      * Parameterized constructor.
      * 
-     * The recent value is always set to false.
+     * The {@link #recent} value is always set to false.
      * 
      * @param x The coordinate value  that will be set on the x-axis to this {@link #Case}.
      * @param y The coordinate value that will be set on the y-axis to this {@link #Case}. 
@@ -84,7 +84,7 @@ public class Case{
     /**
      * Default constructor.
      * 
-     * The color value will be 0 and the recent value is always set to false..
+     * The {@link #couleur} value will be 0 and the recent value is always set to false..
      * 
      * @param x The coordinate value  that will be set on the x-axis to this {@link #Case}.
      * @param y he coordinate value that will be set on the y-axis to this {@link #Case}. 

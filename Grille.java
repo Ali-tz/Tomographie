@@ -15,44 +15,48 @@ public class Grille{
     //  ************************************************************************
 
     /**
-     * private field, represents the number of lines of the matrix
+     * private field, represents the number of lines of this {@link #Grille}.
      */
     private int n;
 
     /**
-     * private field, represents the number of columns of the matrix
+     * private field, represents the number of columns of this {@link #Grille}.
      */
     private int m;
 
     /**
-     * private field, represents the matrix fulfilled by cases of Case
+     * private field, represents this {@link #Grille} fulfilled by cases of {@link #Case}.
      */
     private Case[][] grille;
 
     /**
-     * private field, represents the sequences of the length of the lines' blocks
+     * private field, represents the sequences of the length of the lines' blocks.
      */
     private Sequence[] sLigne;
 
     /**
-     * private field, represents the sequences of the length of the columns' blocks 
+     * private field, represents the sequences of the length of the columns' blocks.
      */
     private Sequence[] sColonne;
 
     /**
-     * private field, reprensents the length of {@link #sColonne}
+     * private field, reprensents the length of {@link #sColonne}.
      */
     private int tailleSeqColonne;
 
     /**
-     * private field, reprensents the length of {@link #sLigne}
+     * private field, reprensents the length of {@link #sLigne}.
      */
     private int tailleSeqLigne;
 
     /**
-     * private field, represents 
+     * private field, used to store the parsed file used to build this {@link #Grille}.
      */
     private String s;
+
+    /**
+     * private fiels, tells if this {@link #Grille} is fullfield. 1 means it's completed, 0 means uncompletable and -1 we don't know.
+     */
     private int complet; /* 1-> complété -- -1->on ne sait pas -- 0-> incomplétable*/
 
 
@@ -62,6 +66,13 @@ public class Grille{
 
     //  *************************************************************************
 
+    /**
+     * Parametrized constructor.
+     * 
+     * The {@link #grille} will be set to empty and {@link #complet} will be set to -1.
+     * 
+     * @param s Supposed to contain the block's sequences for the lines and columns.
+     */
     public Grille(String s){
 
         this.s = s;
@@ -111,6 +122,12 @@ public class Grille{
     //  Public methods
 
     //  *************************************************************************
+
+    /**
+     * This method returns a copy of this {@link #Grille}
+     * 
+     * @return A clone of this {@link #Grille}.
+     */
     public Grille clone(){
         Grille G = new Grille(this.getSequences());
         for(int j = 0; j < m; j++){
@@ -121,10 +138,26 @@ public class Grille{
         return G;
     }
     
+
+    /**
+     * This method is used to change the colors of the {@link #Case} in this {@link #Grille}.
+     * 
+     * 
+     * @param i The x-axis coordinate of the {@Clink #Case} in this {@link #Grille}.
+     * @param j The y-axis coordinate of the {@Clink #Case} in this {@link #Grille}.
+     * @param cl The new color of the {@Clink #Case} in this {@link #Grille}.
+     * 
+     */
     public void setColor(int i,int j,int cl){
         this.getCase(i,j).changeCouleur(cl);
     }
     
+
+    /**
+     * This method returns this {@link #Grille} colored and if possible completed.
+     * 
+     * @return This {@link #Grille} completed if possible.
+     */
     public Grille enumeration(){
         Algorithme alg = new Algorithme(this);
         Grille A = alg.coloration();
@@ -140,16 +173,24 @@ public class Grille{
             return A;
 
         }
-        
-        
+             
         Grille ABlanc = A.EnumRec(0,1);
         if (ABlanc == null){return A.EnumRec(0,2);}
         else return ABlanc;
-
-
-
     }
 
+
+    /**
+     * This method return a clone of this {@link #Grille} colored and if possible completed
+     * 
+     * @param i1 The x-axis coordinate of the {@Clink #Case} in this {@link #Grille} that you will start your coloration with.
+     * @param j1 The y-axis coordinate of the {@Clink #Case} in this {@link #Grille} that you will start your coloration with.
+     * @param c The color value that will be set to (i1,j1) {@link #Case} in this {@link #Grille}.
+     * 
+     * 
+     * @return A clone of his {@link #Grille} colored and if possible completed.
+     * 
+     */
     public Grille colorierEtPropager(int i1, int j1, int c){ /* FONCTION DE COLORATION DE LA GRILLE */
 
         Grille gClone = this.clone();
@@ -193,7 +234,6 @@ public class Grille{
                 lignesAVoir.remove((Object) p); 
             }
 
-
             System.out.println("Puis les colonnes");
             while ( !colonnesAVoir.isEmpty() ){              
                 int q = colonnesAVoir.get(0);
@@ -219,6 +259,15 @@ public class Grille{
         return gClone;
     }
 
+    
+    /**
+     * This method returns a clone of {@link #Grille} colored and if possible completed, else it's uncompletable
+     * 
+     * @param k Index of a {@link #Case} in this {@link #Grille}.
+     * @param c Color of the {@link #Case}
+     * 
+     * @return A clone of {@link #Grille} colored and if possible completed, else it's uncompletable
+     */
     public Grille EnumRec(int k, int c){
         
         System.out.println("k:" + k + "\n");
@@ -250,17 +299,23 @@ public class Grille{
         }
 
         return gClone;
-
     }
 
     
 
     
-
+    /**
+     * This method allows us to reach the field {@link #n}
+     * @return The number of lines of this {@link #Grille}
+     */
     public int getN(){
         return n;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getM(){
         return m;
     }
