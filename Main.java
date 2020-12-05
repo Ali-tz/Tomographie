@@ -27,11 +27,15 @@ public class Main{
 
         Algorithme test = new Algorithme(grille);
 
+        long start = System.currentTimeMillis();
         Grille grilleColo = test.coloration();
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
 
         //Grille grilleColo = grille.enumeration();
 
-        System.out.println(grilleColo);
+        //System.out.println(grilleColo);
 
         API_Grille f = new API_Grille(grilleColo);
         f.run();
