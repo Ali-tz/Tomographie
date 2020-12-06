@@ -52,14 +52,14 @@ public class Algorithme{
     
     //  ------------------------------------------------------------------------
     
-    /*
+    /**
      * This method tells us if the lines of {@link #G} can be completed with their {@link #Sequence}.
      * @param i Line we work on
      * @param j Column we start with
      * @param l Number of blocks.
      * @return True if we can solve the line, false if we can not.
      */
-     /*public boolean T(int i, int j, int l){
+     public boolean T_q1(int i, int j, int l){
 
         if (l==0){
             return false;
@@ -84,7 +84,7 @@ public class Algorithme{
                 return T(i,j - sl - 1, l-1) || T(i,j-1, l);
             }
         }
-    } */
+    } 
    
 
 
@@ -104,7 +104,7 @@ public class Algorithme{
      * @param verite Matrix used for the dynamic programmation.
      * @return True if we can solve the line, false if we can not.
      */
-    public boolean T(int i, int j, int l, int[][] verite){  
+    public boolean T(int i, int j, int l){  
   
         if (j<0){
             return (l==0);
@@ -149,7 +149,7 @@ public class Algorithme{
                 if (N){
                     return false;
                 }              
-                return T(i,j-1,l, verite);
+                return T(i,j-1,l);
             }
         }
 
@@ -157,18 +157,18 @@ public class Algorithme{
             if (G.getCouleur(i, j)==2){ /*La séquence l doit etre contrenu dans sl case et entouré de cases blanches de chaques cotés */
                 return false;
             }
-            return T(i,j-1,l, verite);
+            return T(i,j-1,l);
         }
         
         if (sl==1 && N){
-            return T(i,j-sl-1,l-1, verite)||T(i,j-1,l-1, verite);
+            return T(i,j-sl-1,l-1)||T(i,j-1,l-1);
         } 
         
         if(G.getCouleur(i,j)==2){
-            return T(i, j-sl-1, l-1 ,verite);
+            return T(i, j-sl-1, l-1);
         } 
 
-        return T(i,j-sl-1,l-1, verite)||T(i,j-1,l, verite);   
+        return T(i,j-sl-1,l-1)||T(i,j-1,l);   
     }
 
 
@@ -267,12 +267,11 @@ public class Algorithme{
      * 
      * @see Algorithme#G
      */
-    public boolean colorLigne(int i, int j, int l, Grille grille){  /* FONTION DE COLORATION DES LIGNES */
+    public boolean colorLigne(int i, int j, int l, Grille grille){  
         int m = grille.getM()-1;
         Algorithme gAlg = new Algorithme(grille);
 
-        int[][] verite = new int[m][l];
-        if(!gAlg.T(i,m,l, verite)){
+        if(!gAlg.T(i,m,l)){
             return false;
         }
         if(j < 0){return true;}
@@ -283,9 +282,9 @@ public class Algorithme{
 
         grille.getCase(i, j).changeCouleur(2);
 
-        if(gAlg.T(i,m,l, verite)){
+        if(gAlg.T(i,m,l)){
             grille.getCase(i, j).changeCouleur(1);
-            if(gAlg.T(i,m,l, verite)){
+            if(gAlg.T(i,m,l)){
                 grille.getCase(i, j).changeCouleur(0); 
             }else{
                 grille.getCase(i, j).changeCouleur(2);
@@ -294,7 +293,7 @@ public class Algorithme{
             return colorLigne(i, j-1, l, grille);
         }else{
             grille.getCase(i, j).changeCouleur(1);
-            if(gAlg.T(i,m,l, verite)){
+            if(gAlg.T(i,m,l)){
                 grille.getCase(i, j).setRecent(true);
                 return colorLigne(i, j-1, l, grille);
             }
@@ -347,7 +346,7 @@ public class Algorithme{
             }
             grille.getCase(i, j).changeCouleur(0);
 
-            System.out.println("i:" + i + " j:" + j);
+            //System.out.println("i:" + i + " j:" + j);
             return false;
         }
     }

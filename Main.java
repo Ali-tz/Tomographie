@@ -30,7 +30,7 @@ public class Main{
         
         Grille grille = new Grille(str);
 
-        long timeElapsed = 0;
+        /*long timeElapsed = 0;*/
     
         
         /* Q10
@@ -49,7 +49,7 @@ public class Main{
         System.out.println(timeElapsed/11);*/
 
         
-        for(int i=0;i<10;i++){
+        /*for(int i=0;i<10;i++){
             long start = System.nanoTime();
   
             Grille grilleColo = grille.enumeration();
@@ -57,17 +57,17 @@ public class Main{
             System.out.println(finish - start);
             timeElapsed += finish - start;
         
-        } 
+        } */
         
       
-        System.out.println(timeElapsed/11);
+        /*System.out.println(timeElapsed/11);*/
 
-        //Grille grilleColo = grille.enumeration();
+        Grille grilleColo = grille.enumeration();
 
         //System.out.println(grilleColo);
 
-        //API_Grille f = new API_Grille(grilleColo);
-        //f.run();
+        API_Grille f = new API_Grille(grilleColo);
+        f.run();
 
     }
   
