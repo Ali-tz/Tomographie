@@ -61,7 +61,6 @@ public class Main{
         
       
         /*System.out.println(timeElapsed/11);*/
-
         Grille grilleColo = grille.enumeration();
 
         //System.out.println(grilleColo);
